@@ -1,0 +1,20 @@
+/* <dtml-with base_properties> (do not remove this :) */
+/* <dtml-call "REQUEST.set('portal_url', portal_url())"> (not this either :) */
+
+#newsletter-signup,
+.template-season_view .contenttype-show .tileFooter 
+{
+    display: none;
+}
+
+.template-season_view .contenttype-show {
+    margin-top: 40px;
+}
+.template-season_view .contenttype-show p {
+    margin: 0;
+}
+.template-season_view .contenttype-show h2.tileHeadline {
+    margin: 0.25em 0;
+}
+
+/* </dtml-with> */

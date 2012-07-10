@@ -1,0 +1,46 @@
+<tal:tabs tal:condition="view/portal_tabs"
+          i18n:domain="plone">
+    <h5 class="hiddenStructure" i18n:translate="heading_sections">Sections</h5>
+
+    <ul id="portal-globalnav"><tal:tabs tal:repeat="tab view/portal_tabs"><li 
+    tal:define="is_last python: repeat['tab'].end and 'last' or '';
+		number string:iteration${repeat/tab/number};
+		is_selected python: view.selected_portal_tab==tab['id'];"
+    tal:attributes="id string:portaltab-${tab/id};
+                            class python:(view.selected_portal_tab==tab['id'] and 'selected' or 'plain') + (' ' + is_last + ' ' + number);"
+            ><a href="" 
+               tal:content="tab/name"
+               tal:attributes="href tab/url;
+                               title tab/description|nothing">
+            Tab Name
+            </a><tal:selected tal:condition="is_selected"><ul 
+		id="subtabs" 
+		tal:define="subtabs python: view.getsubtabs(context, tab);"
+		tal:condition="subtabs"><li tal:repeat="subtab subtabs"
+		><a href="#" tal:content="subtab/name"
+			tal:attributes="href subtab/url;">[Subtab]</a></li
+			></ul></tal:selected></li></tal:tabs></ul>
+
+    <tal:block tal:condition="nothing">
+    <tal:block
+	tal:define="subnav tab/subtab;"
+	tal:condition="subnav">
+    <ul class="nn-twolevel-subnav">
+        <tal:tabs tal:repeat="subtab subnav">
+        <li tal:attributes="id string:portaltab-${subtab/id};">
+        <a href="" class="" tal:attributes="href subtab/url;" accesskey="accesskeys-tabs" i18n:attributes="accesskey">
+            <tal:block omit-tag="" i18n:translate="" >
+            <span tal:replace="subtab/name">Tab Name</span>
+            </tal:block>
+        </a>
+        </li>
+        </tal:tabs>
+    </ul>
+    </tal:block>
+    </tal:block>
+    
+</tal:tabs>
+
+
+    
+    

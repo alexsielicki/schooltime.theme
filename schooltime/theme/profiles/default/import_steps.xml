@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<import-steps>
+  <import-step id="schooltime.theme.various"
+               version="20090703-01"
+               handler="schooltime.theme.setuphandlers.setupVarious"
+               title="Schooltime Theme: miscellaneous import steps">
+    <dependency step="skins" />
+    Various import steps that are not handled by GS import/export
+    handlers.
+  </import-step>
+</import-steps>

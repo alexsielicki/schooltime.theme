@@ -1,0 +1,11 @@
+<div id="portal-footer" metal:define-macro="portal_footer" i18n:domain="plone">
+
+<div id="homepage-bottom-wrapper">
+<div id="homepage-bottom-wrapper-inner"  
+	tal:define="content nocall:context/components/homepage-bottom|nothing;"
+	tal:condition="exists:context/components/homepage-bottom"
+	tal:content="structure content/getText|nothing">
+</div>
+</div>
+
+</div>

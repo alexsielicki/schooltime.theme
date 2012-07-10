@@ -1,0 +1,631 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ 
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
+      lang="en-US"
+      i18n:domain="plone">
+<body>
+
+<!-- 
+CalendarX Macros 
+A ZPT macro is a piece of code that is injected into whatever page template
+  calls it.  They are VERY handy here because we take code out of the view
+  page templates and put it into macros so that the views become less 
+  complicated.  Our use of macro code will certainly expand in future 
+  releases of CalendarX.
+When creating and calling custom macros you may create, be sure to use the 
+  getCXMacro code we added to call your macro through the skin method.  Just
+  follow our code examples in the views and you'll be fine.
+Contents:
+1.  samplemacronamehere - a sample macro
+2.  headstuff - the Title, Description and Action Icons at the page top, 
+  which can be removed in CX_props_calendar property sheet.
+3.  caltabsforviews - the view tabs at the top of the calendar
+3.  prevnextcurrentlinks - the text and links at the top/bottom of calendar.
+  Each (every) view (viewname) needs an entry in this macro!!!
+  Also, prevnextcurrentlinks_nojump is nearly identical, but without the 
+  JumpToDate widget, and is called at the bottom of each view.
+4.  monthdaysofweek - orders days of the week properly
+5.  monthnameformultimonths - simple monthname for multimonth view
+6.  hoursdisplay - displays hours on day, weekbyhour views.
+7.  halfhoursdisplay - displays halfhours on day, weekbyhour views.
+8.  popuptextbox - generates the rollover popup text boxes for each event
+9.  eventlister, mMeventlister - displays the event text and link in the 
+  calendar cells for each event 
+10.  copyright - Powered by CalendarX link.
+11.  subjectlinks - shows choices for Subject categories, plus other widgets.
+-->
+<!-- HISTORY for 0.9.2 (code base is 0.9.1)
+bugfix: PrevNextCurrentLinks has JumpToDateWidget that was hardcoded to range(2000:2010) 
+  ending in two months! Made this run -4 to +6 years from current year.
+bugfix: subjectlinks: i18n label: label_sublinks_backtoresources fixed from
+  erroneous label_sublinks_show_backtoresources.
+bugfix: subcalendars broke subjectlinks macro badly.  mostly fixed now, i think.
+bugfix: eventlister, mMeventlister - class: defaulted to "eventPublished" instead of to classstate, fixed.
+-->
+
+
+<!-- SampleMacroNameHere -->
+<!-- BriefDescriptionHere -->
+<p tal:omit-tag="" metal:define-macro="samplemacronamehere" i18n:domain="calendarx">
+  Copyright 2004, <em>Foo, Bar, and Associates</em> Inc.
+</p>
+
+
+
+
+
+<!-- headstuff -->
+<!-- Shows the Title, Icons, Description at the TOP of the calendar. -->
+<!-- Edit this to take it out or trim off the description part, etc. -->
+<span tal:omit-tag="" 
+      tal:condition="python:here.getCXAttribute('showHeaderTitleAndIcons')"
+      metal:define-macro="headstuff">
+  <h1 tal:content="here/title_or_id" class="documentFirstHeading">
+            Title or id
+  </h1>
+  <div metal:use-macro="here/document_actions/macros/document_actions">
+            Document actions (print, sendto etc)
+  </div>
+  <div class="documentDescription"
+       tal:content="here/Description">
+      description
+  </div>
+</span>
+
+
+
+
+
+
+<!-- caltabsforviews -->
+<!-- CONDITIONAL: depends on the view you are using -->
+<!-- A table ROW of tabs for calendar views: month, week, day, etc. -->
+<span tal:omit-tag="" metal:define-macro="caltabsforviews" i18n:domain="calendarx">
+<span tal:omit-tag="" 
+      tal:define="multimonthClass python:test(viewname == 'multimonth','selected','plain');
+                  monthClass python:test(viewname == 'month','selected','plain');
+                  weekClass python:test(viewname == 'weekbyday','selected','plain');
+                  week2Class python:test(viewname == 'weekbyhour','selected','plain');
+                  dayClass python:test(viewname == 'day','selected','plain');
+                  helpClass python:test(viewname == 'help','selected','plain');">
+  <tr> 
+    <th>
+        <div class="calTabs">
+          <a class="plain" href="#" tal:condition="python:checkPermission('Modify portal content', here)" 
+              tal:attributes="href python:context.absolute_url()+'/edit'" 
+              i18n:translate="label_managetab">Manage</a> 
+          <a id="calxtab-3months" class="plain" href="#" tal:attributes="href Dict/urlMonth2;
+                                                    class multimonthClass;" 
+             i18n:translate="label_multimonth">3 Months</a> 
+          <a id="calxtab-month" class="plain" href="#" tal:attributes="href Dict/urlMonth;
+                                                    class monthClass;" 
+             i18n:translate="label_month">Month</a> 
+          <a id="calxtab-weekbyday" class="plain" href="#" tal:attributes="href Dict/urlWeek;
+                                                    class weekClass;" 
+             i18n:translate="label_week_by_day">Week by Day</a> 
+          <a id="calxtab-weekbyhour" class="plain" href="#" tal:attributes="href Dict/urlWeek2;
+                                                    class week2Class;" 
+             i18n:translate="label_week_by_hour">Week by Hour</a> 
+          <a id="calxtab-day" class="plain" href="#" tal:attributes="href Dict/urlDay;
+                                                    class dayClass;" 
+             i18n:translate="label_day">Day</a>
+          <a id="calxtab-help" class="plain" href="#" tal:condition="python:here.getCXAttribute('useCalendarHelp')"
+                                    tal:attributes="href Dict/urlHelp;
+                                                    class helpClass;" i18n:translate="label_calendar_help">Calendar Help</a><div class="visualClear"><!-- --></div></div>
+    </th>
+  </tr>
+</span>
+</span>
+
+
+
+
+<!-- PrevNextCurrentLinks -->
+<!-- CONDITIONAL: depends on the view you are using: see getDictCommon.py -->
+<!-- builds the links for previous, next, and displays current date in the middle -->
+<!-- *** All Views need to specify a format for their version of the Date in the calheader *** -->
+<span tal:omit-tag="" metal:define-macro="prevnextcurrentlinks" i18n:domain="calendarx">
+<table class="calheader">
+  <tr>
+    <td class="left">&lt;&lt; <a href="#" tal:attributes="href Dict/urlPrev" 
+                                          tal:content="Dict/prevstring" i18n:translate="">previous period</a></td>
+    <td class="center">
+      <span i18n:translate="calheader_fmt_date_month" tal:omit-tag=""
+            tal:condition="python:viewname == 'month' or viewname == 'multimonth'">
+          <span i18n:name="monthname"><span i18n:translate="" tal:content="python: currentDate.Month()" tal:omit-tag="">monthname</span></span>
+          <span i18n:name="year" tal:content="python: currentDate.year()" tal:omit-tag="">year</span>
+      </span>
+      <span i18n:translate="calheader_fmt_date_week" tal:omit-tag=""
+            tal:condition="python:viewname == 'weekbyday' or viewname == 'weekbyhour' or viewname == 'week'">
+          <span i18n:name="mon1"><span i18n:translate="" tal:content="python: startDate.Month()" tal:omit-tag="">monthname</span></span>
+          <span i18n:name="date1" tal:content="python: startDate.day()" tal:omit-tag="">date</span>
+          <span i18n:name="year1" tal:content="python: startDate.year()" tal:omit-tag="">year</span>
+          <span i18n:name="mon2"><span i18n:translate="" tal:content="python: endDate.Month()" tal:omit-tag="">monthname</span></span>
+          <span i18n:name="date2" tal:content="python: endDate.day()" tal:omit-tag="">date</span>
+          <span i18n:name="year2" tal:content="python: endDate.year()" tal:omit-tag="">year</span>
+      </span>
+      <span i18n:translate="calheader_fmt_date_day" tal:omit-tag=""
+            tal:condition="python:viewname == 'day'">
+          <span i18n:name="dayname"><span i18n:translate="" tal:content="python: currentDate.Day()" tal:omit-tag="">dayname</span></span>
+          <span i18n:name="monthname"><span i18n:translate="" tal:content="python: currentDate.Month()" tal:omit-tag="">monthname</span></span>
+          <span i18n:name="date" tal:content="python: currentDate.day()" tal:omit-tag="">date</span>
+          <span i18n:name="year" tal:content="python: currentDate.year()" tal:omit-tag="">year</span>
+      </span>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td class="right"><a href="#" tal:attributes="href Dict/urlNext" 
+                                  tal:content="Dict/nextstring" i18n:translate="">next period</a> &gt;&gt;</td>
+  </tr>
+  <tr tal:condition="python:here.getCXAttribute('showJumpToDateWidget')">
+    <td class="choosedate" colspan="3"
+        tal:define="std modules/Products.PythonScripts.standard;
+                                       url_quote nocall: std/url_quote;">
+    <form action="this page" tal:attributes="action Dict/urlThis; method string:get;">
+      <input tal:attributes="type string:hidden; name string:currentDate; value python:url_quote(currentDate.Date());" /> 
+      <input tal:attributes="type string:hidden; name string:xmy; value python:xmy;" /> 
+      <input tal:attributes="type string:hidden; name string:xsub; value python:xsub;" />       
+      <select name="jumpmonth" tal:condition="python:here.getCXAttribute('useNumericMonthInJumpToDateWidget')"> 
+                                <option tal:repeat="month python:range(1,13)" 
+                                        tal:attributes="selected python:month == currentDate.month() or nothing; value python:month" 
+                                        tal:content="python:month">the month</option> </select>
+      <select name="jumpmonth" tal:condition="python:not here.getCXAttribute('useNumericMonthInJumpToDateWidget')"> 
+                                <option tal:repeat="month python:range(1,13)" 
+                                        tal:attributes="selected python:month == currentDate.month() or nothing; value python:month" 
+                                        i18n:translate=""
+                                        tal:content="python:context.getMonthName(month)"> the month abbreviated </option> </select>
+      <select name="jumpday" class="jumpday"> <option tal:repeat="day python:range(1,32)" tal:attributes="selected python:day == currentDate.day() or nothing; value python:day" tal:content="python:day">the date</option> </select>
+      <select name="jumpyear"> <option tal:repeat="year python:range(currentDate.year()-4,currentDate.year()+6)" tal:attributes="selected python:year == currentDate.year() or nothing; value python:year;" tal:content="python:year">the year</option> </select>      
+      <input type="submit" 
+             value="label_button_jump"
+             i18n:attributes="value" /> 
+    </form>
+    </td>
+  </tr>
+</table>
+</span>
+
+
+
+
+<!-- PrevNextCurrentLinks_NoJump -->
+<!-- Same as PrevNextCurrentLinks, but without the JumpToDate widget -->
+<!--   used at the bottom of each view to avoid the IE6 overlapping rollover info window bug -->
+<span tal:omit-tag="" metal:define-macro="prevnextcurrentlinks_nojump" i18n:domain="calendarx">
+<table class="calheader">
+  <tr>
+    <td class="left">&lt;&lt; <a href="#" tal:attributes="href Dict/urlPrev" 
+                                          tal:content="Dict/prevstring" i18n:translate="">previous period</a></td>
+    <td class="center">
+      <span i18n:translate="calheader_fmt_date_month" tal:omit-tag=""
+            tal:condition="python:viewname == 'month' or viewname == 'multimonth'">
+          <span i18n:name="monthname"><span i18n:translate="" tal:content="python: currentDate.Month()">monthname</span></span>
+          <span i18n:name="year" tal:content="python: currentDate.year()">year</span>
+      </span>
+      <span i18n:translate="calheader_fmt_date_week" tal:omit-tag=""
+            tal:condition="python:viewname == 'weekbyday' or viewname == 'weekbyhour' or viewname == 'week'">
+          <span i18n:name="mon1"><span i18n:translate="" tal:content="python: startDate.Month()">monthname</span></span>
+          <span i18n:name="date1" tal:content="python: startDate.day()">date</span>
+          <span i18n:name="year1" tal:content="python: startDate.year()">year</span>
+          <span i18n:name="mon2"><span i18n:translate="" tal:content="python: endDate.Month()">monthname</span></span>
+          <span i18n:name="date2" tal:content="python: endDate.day()">date</span>
+          <span i18n:name="year2" tal:content="python: endDate.year()">year</span>
+      </span>
+      <span i18n:translate="calheader_fmt_date_day" tal:omit-tag=""
+            tal:condition="python:viewname == 'day'">
+          <span i18n:name="dayname"><span i18n:translate="" tal:content="python: currentDate.Day()">dayname</span></span>
+          <span i18n:name="monthname"><span i18n:translate="" tal:content="python: currentDate.Month()">monthname</span></span>
+          <span i18n:name="date" tal:content="python: currentDate.day()">date</span>
+          <span i18n:name="year" tal:content="python: currentDate.year()">year</span>
+      </span>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td class="right"><a href="#" tal:attributes="href Dict/urlNext" 
+                                  tal:content="Dict/nextstring" i18n:translate="">next period</a> &gt;&gt;</td>
+  </tr>
+</table>
+</span>
+
+
+
+
+
+
+<!-- monthdaysofweek -->
+<!-- generates <th> tags for seven days of the week names for the month view of the calendar -->
+<!-- starts on Sunday, unless set differently in CalendarX properties sheet -->
+<!-- see the INSTALL.txt for details -->
+<span tal:omit-tag="" metal:define-macro="monthdaysofweek" i18n:domain="calendarx">
+  <span tal:omit-tag="" tal:define="daysOfTheWeek here/getDaysOfTheWeek">
+        <span tal:omit-tag="" tal:repeat="item python:range(7)">
+          <th i18n:translate="heading_fmt_day_month">
+            <span i18n:name="dayName"><span i18n:translate="" tal:omit-tag="" tal:content="python:daysOfTheWeek[item]">dayName</span></span>
+          </th>
+        </span>
+  </span>
+</span>
+
+
+
+
+
+
+<!-- monthnameformultimonths -->
+<!-- generates <td> tag for monthnames for the multimonth view of the calendar -->
+<span tal:omit-tag="" metal:define-macro="monthnameformultimonths" i18n:domain="calendarx">
+    <th class="center" 
+        tal:attributes="colspan python:7"
+        tal:condition="python:mMonth > 0">
+      <span i18n:translate="calheader_fmt_date_month" 
+            tal:omit-tag="">
+          <span i18n:name="monthname">
+              <span i18n:translate=""
+                    tal:define="monthstring python:startDateList[mMonth].strftime('%B').capitalize()"
+                    tal:content="string:$monthstring">&nbsp;
+              </span>
+          </span>
+          <span i18n:name="year" tal:define="year python:startDateList[mMonth].year()"
+                tal:content="string:$year">&nbsp;
+          </span>
+      </span>
+      &nbsp;
+    </th>
+    <th class="noshow"
+        tal:attributes="colspan python:7"
+        tal:condition="python:mMonth == 0"></th>
+
+
+</span>
+
+
+
+
+
+
+<!-- HoursDisplay -->
+<!-- Formatted display for hours in left column of Day and WeekByHour views
+     Also handles half-hour periods.
+     To customize further, add new conditional span tags with getCXAttribute
+     codes (like 12ampm) and put your td tag code in.  For more on strftime use,
+     see docs at http://www.python.org/doc/current/lib/module-time.html -->
+<span tal:omit-tag="" metal:define-macro="hoursdisplay">
+  <span tal:omit-tag="" tal:condition="python:here.getCXAttribute('hoursDisplay') == '12ampm'">
+    <td class="hour"><span tal:define="thishour python: int(start.strftime('%I'));
+                                       thisampm python: start.strftime('%p').lower();"
+                           tal:replace="string:${thishour} ${thisampm}"
+                           tal:condition="onTheHour">TimeLabel</span>
+                     <span tal:define="thishour python: str(int(start.strftime('%I')));
+                                       thisampm python:':'+start.strftime('%M');"
+                           tal:replace="string:${thishour}${thisampm}"
+                           tal:condition="onTheHalf">TimeLabel</span> 
+    </td>
+  </span>
+  <span tal:condition="python:here.getCXAttribute('hoursDisplay') != '12ampm'">
+    <td class="hour"><span tal:define="thishour python: int(start.strftime('%H'));
+                                       thismin python: start.strftime('%M');"
+                           tal:replace="string:${thishour}.${thismin}"
+                           tal:condition="onTheHour">TimeLabel</span>
+                     <span tal:define="thishour python: int(start.strftime('%H'));
+                                       thismin python: start.strftime('%M');"
+                           tal:replace="string:${thishour}.${thismin}"
+                           tal:condition="onTheHalf">TimeLabel</span> 
+  </span>
+</span>
+
+
+
+
+
+
+
+<!-- PopupTextBox -->
+<!-- Box of text that pops up on rollover of each event -->
+<span tal:omit-tag="" metal:define-macro="popuptextbox" i18n:domain="calendarx">
+<div id="calinfoID" class="calinfo" style="visibility:hidden" tal:attributes="id string:$eventID">
+  <span tal:omit-tag="" name="Title" tal:condition="python:here.getCXAttribute('showPOPTitle')"><div class="inforow"><strong i18n:translate="calx_popup_title">Title:</strong> <span tal:replace="eventtitle">Title</span></div></span>
+  <span tal:omit-tag="" name="Type" tal:condition="python:here.getCXAttribute('showPOPType')"><div class="inforow"><strong i18n:translate="calx_popup_type">Type:</strong> <span tal:replace="portaltype">Type</span></div></span>
+  <span tal:omit-tag="" name="Subject" tal:condition="python:here.getCXAttribute('showPOPSubject')"><div class="inforow"><strong i18n:translate="calx_popup_subject">Subject:</strong> <span tal:condition="python:event.Subject != ()" tal:replace="python: ', '.join(event.Subject)">Subject</span></div></span>
+  <span tal:omit-tag="" name="Start" tal:condition="python:here.getCXAttribute('showPOPStart')"><div class="inforow"><strong i18n:translate="calx_popup_start">Start:</strong> <span tal:replace="string:$stime - $smonth $sday, $syear">start</span></div></span>
+  <span tal:omit-tag="" name="End" tal:condition="python:here.getCXAttribute('showPOPEnd')"><div class="inforow"><strong i18n:translate="calx_popup_end">End:</strong> <span tal:replace="string:$etime - $emonth $eday, $eyear">end</span></div><br/></span>
+  <span tal:omit-tag="" name="Creator" tal:condition="python:here.getCXAttribute('showPOPCreator')"><div class="inforow"><strong i18n:translate="calx_popup_creator">Creator:</strong> <span tal:replace="event/Creator">Creator</span></div></span>
+  <span tal:omit-tag="" name="Created" tal:condition="python:here.getCXAttribute('showPOPCreated')"><div class="inforow"><strong i18n:translate="calx_popup_created">Created:</strong> 
+          <span tal:define="ecreated python:DateTime(str(event.CreationDate));
+                            cyear python: ecreated.year();
+                            cmonth python: ecreated.aMonth();
+                            cday python: ecreated.day();" 
+                tal:replace="string:$cmonth $cday, $cyear">created</span></div></span>
+  <span tal:omit-tag="" name="Modified" tal:condition="python:here.getCXAttribute('showPOPModified')"><div class="inforow"><strong i18n:translate="calx_popup_modified">Modified:</strong> 
+          <span tal:define="emod python:DateTime(str(event.ModificationDate));
+                            myear python: emod.year();
+                            mmonth python: emod.aMonth();
+                            mday python: emod.day();" 
+                tal:replace="string:$mmonth $mday, $myear">modified</span></div></span>
+  <span tal:omit-tag="" name="State" tal:condition="python:here.getCXAttribute('showPOPState')"><div class="inforow"><strong i18n:translate="calx_popup_state">State:</strong> <span tal:replace="event/review_state">review_state</span></div><br/></span>
+  <span tal:omit-tag="" name="Description" tal:condition="python:here.getCXAttribute('showPOPDescription')"><div class="inforow"><strong i18n:translate="calx_popup_description">Description:</strong> <span tal:replace="event/Description">Description</span></div></span>
+</div>
+</span>
+
+
+
+
+
+
+
+<!-- Eventlister -->
+<!-- Generates the div that actually displays the event in each cell -->
+<span tal:omit-tag="" metal:define-macro="eventlister" i18n:domain="calendarx">
+                        <div class="eventlisting">
+                          <a href="#" onmouseover="" onmouseout=""  
+                               tal:attributes="href eventurl;  
+                                               class python: test(useETCSS,classeventtype,test(useSubjCSS,classsubject,classstate));
+                                               onmouseover string:mouseOverEvent(${jsStart}, ${jsEnd}, '${eventID}');  
+                                               onmouseout string:mouseOutEvent(${jsStart}, ${jsEnd}, '${eventID}')">  
+                            <metal:block tal:repeat="subject event/Subject"
+                                         tal:condition="python: useSubjectIcons and not useEventTypeIcons"> 
+                              <img class="eventicon" tal:replace="structure python:here.getEventIcons(event,subject=subject)" />
+                            </metal:block>
+                            <metal:block tal:condition="python: useEventTypeIcons"> 
+                              <img class="eventicon" tal:replace="structure python:here.getEventIcons(event,type=portaltype)" />
+                            </metal:block>
+                            <img class="eventicon" tal:condition="python: not useSubjectIcons and not useEventTypeIcons"
+                                 tal:replace="structure python:here.getEventIcons(event,'no subject')" />
+                            <span tal:replace="structure eventstring"
+                                  tal:condition="nothing">startof event</span>
+                            <strong class="calx-eventtitle" tal:content="eventtitle"></strong>
+                            <div class="calx-stime" tal:content="stime"><span></span></div>
+                          </a>
+                        </div>
+</span>
+
+
+
+<!-- mMEventlister -->
+<!-- Generates the div that actually displays the event in each cell -->
+<span tal:omit-tag="" metal:define-macro="mMeventlister" i18n:domain="calendarx">
+                        <div class="eventlisting">
+                          <a href="#" onmouseover="" onmouseout=""  
+                               tal:attributes="href eventurl;  
+                                               class python: test(useETCSS,classeventtype,test(useSubjCSS,classsubject,classstate));  
+                                               onmouseover string:mMmouseOverEvent(${jsArray}, '${eventID}');  
+                                               onmouseout string:mMmouseOutEvent(${jsArray}, '${eventID}')">  
+                            <metal:block tal:repeat="subject event/Subject"
+                                         tal:condition="python: useSubjectIcons and not useEventTypeIcons"> 
+                              <img class="eventicon" tal:replace="structure python:here.getEventIcons(event,subject=subject)" />
+                            </metal:block>
+                            <metal:block tal:condition="python: useEventTypeIcons"> 
+                              <img class="eventicon" tal:replace="structure python:here.getEventIcons(event,type=portaltype)" />
+                            </metal:block>
+                            <img class="eventicon" tal:condition="python: not useSubjectIcons and not useEventTypeIcons"
+                                 tal:replace="structure python:here.getEventIcons(event,'no subject')" />
+                            <span tal:replace="structure eventstring" 
+                                  tal:condition="nothing">startof event</span>
+                            <div class="calx-eventtitle"><strong tal:content="eventtitle"></strong></div>
+                            <div class="calx-stime" tal:content="stime"><span></span></div>
+                          </a>
+                        </div>
+</span>
+
+
+
+<!-- Copyright -->
+<!-- Link displaying powered by information, or use for copyright info -->
+<div metal:define-macro="copyright" class="calxcopyright" i18n:domain="calendarx" tal:condition="nothing">
+  <hr/>
+  <p i18n:translate="calx_powered_by">Powered by <span i18n:name="calx_org_link"><a href="http://calendarx.org" i18n:translate="calx_a_plone_calendar">CalendarX, a Plone Calendar</a></span>.</p>  
+</div>
+
+
+
+
+
+<!-- subjectlinks -->
+<!-- A table ROW of links for different categories via the Subject field -->
+<!-- includes code for Public/My events on the left side -->
+<!-- Checks to see if listOfSubjects is empty-ish, uses catalog.uniqueValuesFor if empty -->
+<!-- Checks useMultiSubjects to choose old, or new MultiSubject form -->
+<!-- Checks for subCalendars, specifically for Resources -->
+<span tal:omit-tag="" metal:define-macro="subjectlinks" i18n:domain="calendarx">
+  <tr tal:condition="python:here.getCXAttribute('showSubjectBar')" class="subjectlinksrow"> 
+    <td class="barleft">
+      <table width="100%">
+        <tr>
+          <td class="barleft2"> 
+            <span class="nowrap"
+                  tal:condition="python:here.getCXAttribute('showPublicPrivateLink')">
+              <img tal:replace="structure here/calLinkOpaque.gif" />
+              <a href="#" tal:attributes="href Dict/urlAllEventsChange"
+                          tal:content="structure Dict/allEventsChangeString"
+                          i18n:translate=""
+                          tal:define="image here/calLinkOpaque.gif" >show all events</a>
+              <img tal:replace="structure here/calLinkOpaque.gif" />
+            </span>
+            <span class="nowrap"
+                  tal:define="isAnon python:container.portal_membership.isAnonymousUser();"
+                  tal:condition="python:context.getCXAttribute('showAddEventLink') and not isAnon">
+              <span tal:define="ANEnoticestring string:/folder_contents?portal_status_message=Add a new Event here.;
+                                ANEUrl python:context.getAddNewEventURL();
+                                urlAddNewEvent string:${ANEUrl}${ANEnoticestring};
+                                urlAddNewEvent python:test(context.getCXAttribute('useCreateObjectOnClick'),ANEUrl, ANEUrl + ANEnoticestring);"
+                    tal:condition="python:ANEUrl">
+                <img tal:replace="structure here/calLinkOpaque.gif" />
+                <a href="#" tal:attributes="href urlAddNewEvent"
+                            i18n:translate="label_sublinks_addevent"
+                            tal:define="image here/calLinkOpaque.gif" >Add a New Event here, eh?</a>
+                <img tal:replace="structure here/calLinkOpaque.gif" />
+              </span>
+            </span>
+            <span class="nowrap"
+                  tal:define="isCalMan python:context.isCalendarManager();"
+                  tal:condition="python:context.getCXAttribute('showPendingLink') and isCalMan">
+                <img tal:replace="structure here/calLinkOpaque.gif" />
+                <a href="#" tal:attributes="href string:${Dict/urlThis}&xpub=pend"
+                            i18n:translate="label_sublinks_show_pending"
+                            tal:define="image here/calLinkOpaque.gif" >Show Pending</a>
+                <img tal:replace="structure here/calLinkOpaque.gif" />
+            </span>
+          </td> 
+          <td class="barright2" tal:define="std modules/Products.PythonScripts.standard;
+                                            mstring modules/string;
+                                            url_quote nocall: std/url_quote;
+                                            count nocall: mstring/count;"> 
+          <form tal:attributes="action Dict/urlThis; 
+                                method string:get; 
+                                name string:subjectform;">
+            <span tal:condition="python:here.getCXAttribute('useMultiSubjects')">
+                <input tal:attributes="type string:hidden; name string:currentDate; value python:url_quote(currentDate.Date());" /> 
+                <input tal:attributes="type string:hidden; name string:xmy; value python:xmy;" /> 
+                <input tal:attributes="type string:hidden; name string:xsub; value string:;" /> 
+
+                <a tal:condition="python:here.getCXAttribute('isSubCalendar')"
+                   tal:define="strDate python:currentDate.Date();
+                               urlly string:${request/URL2}/$viewname?currentDate=$strDate&xmy=$xmy&xsub=ALL"
+                   tal:attributes="href string:$urlly"
+                   i18n:translate="label_sublinks_backtoresources">
+                   resource schedule link
+                </a>    
+                <span class="nowrap" tal:define="subcalname Dict/subcalname;
+                                                 image here/calLinkOpaque.gif"
+                                     tal:replace="structure string:&nbsp; $image &nbsp;$subcalname: ">
+                  Resource Type:
+                </span>
+                <span class="nowrap" 
+                      tal:condition="python:not here.getCXAttribute('isSubCalendar')"
+                      tal:content="python:test(here.getCXAttribute('useSubCalendarSubjectMenu'),'label_sublinks_subcalendars','label_sublinks_categories')"
+                      i18n:translate="">
+                  lead in:
+                </span>
+                <span class="nowrap">
+                  <input i18n:attributes="value" value="label_sublinks_viewall" 
+                         tal:attributes="type string:checkbox; 
+                                         name string:xsubALL; 
+                                         value string:ALL; 
+                                         checked python:count(xsub,'ALL') or nothing; 
+                                         onclick string:fixCategories('ALL');;" />
+                  <span i18n:translate="label_sublinks_viewall">View All</span>
+                </span>
+                <span class="nowrap" 
+                      tal:condition="python:not here.getCXAttribute('useSubCalendarSubjectMenu') or here.getCXAttribute('isSubCalendar')"
+                      tal:define="sublist python:here.getCXAttribute('listOfSubjects');
+                                  hassublist python:len(sublist);
+                                  useportalcatalogvalues python:test(hassublist,0,1);
+                                  subtitles python:here.getListOfSubjectTitles();
+                                  hassubtitles python:len(subtitles);
+                                  usesubtitles python:(here.getCXAttribute('useSubjectTitles') and hassubtitles);
+                                  strDate python:currentDate.Date();"
+                      tal:repeat="subby python:test(useportalcatalogvalues,container.portal_catalog.uniqueValuesFor('Subject'),sublist)">
+                  <input tal:attributes="type string:checkbox; 
+                                         name string:xsub; 
+                                         value string:$subby; 
+                                         checked python:count(xsub,subby) or nothing;
+                                         onclick string:fixCategories();;"/>
+                  <span tal:define="n repeat/subby/number" 
+                        tal:attributes="class python: test(useSubjCSS,here.getSubjectCSSClasses(subject=subby),'eventPublished')"
+                        tal:omit-tag=""> 
+                      <span tal:condition="python:usesubtitles"
+                            tal:content="python:subtitles[n-1]"
+                            tal:omit-tag="" /> 
+                      <span tal:condition="python:not usesubtitles"
+                            tal:content="python:subby"
+                            tal:omit-tag="" /> 
+                  </span>
+                </span>
+
+                <span class="nowrap" 
+                      tal:condition="python:here.getCXAttribute('useSubCalendarSubjectMenu') and not here.getCXAttribute('isSubCalendar')"
+                      tal:define="subcalendarnames python:here.getCXAttribute('listOfSubCalendars');
+                                  subcalendarids python:here.getCXAttribute('listOfSubCalendarIDs');
+                                  strDate python:currentDate.Date();"
+                      tal:repeat="subby python:subcalendarnames">
+                  <input tal:attributes="type string:checkbox; 
+                                         name string:xsub; 
+                                         value string:$subby; 
+                                         checked python:count(xsub,subby) or nothing;
+                                         onclick string:fixCategories();;"/>
+                  <a tal:define="n repeat/subby/number;
+                                 subcalendarname python:subcalendarnames[n-1];
+                                 subcalendarid python:subcalendarids[n-1];
+                                 urlly string:${context/absolute_url}/$subcalendarid/$viewname?currentDate=$strDate&xmy=$xmy&xsub=ALL"
+                     tal:attributes="href string:$urlly"
+                     tal:content="subcalendarname">
+                     subcalendar link
+                  </a>    
+
+                </span>
+                <span>
+                  <input type="submit" i18n:attributes="value" value="label_sublinks_refresh"/>
+                </span>
+            </span>
+
+
+            <span tal:condition="python:not here.getCXAttribute('useMultiSubjects')"
+                  tal:define="sublist python:here.getCXAttribute('listOfSubjects');
+                              issublist python:len(sublist);
+                              useportalcatalogvalues python:test(issublist,0,1);
+                              subtitles python:here.getListOfSubjectTitles();
+                              hassubtitles python:len(subtitles);
+                              usesubtitles python:here.getCXAttribute('useSubjectTitles');
+                              image here/calLinkOpaque.gif;
+                              subls python:[subl for subl in sublist if count(xsub,subl)];">
+              <span tal:define="global subtitlesstr python:''" />
+<!-- dunno exactly why we need this.
+              <span tal:define="global subtitlesstr python:''" 
+                    tal:repeat="subby python:test(useportalcatalogvalues,container.portal_catalog.uniqueValuesFor('Subject'),sublist)">
+                  <span tal:condition="python:subby in subls and hassubtitles"
+                        tal:define="n repeat/subby/number;
+                                    global subtitlesstr python:subtitlesstr+subtitles[n-1]+',';
+                                    global subtitlesstr python:test(count(xsub,'ALL'),'ALL,',subtitlesstr)" />
+                  <span tal:condition="python:not subby in subls"
+                        tal:define="n repeat/subby/number;
+                                    global subtitlesstr python:test(count(xsub,'ALL'),'ALL,',subtitlesstr)" />
+              </span>
+-->
+              <span tal:define="subject python:test(usesubtitles,subtitlesstr[:-1],Dict['xsub'])"
+                    tal:content="structure string: $image $subject $image">
+                Current Subject
+              </span>
+              <span i18n:translate="label_sublinks_cat_header" tal:omit-tag="">
+                  <span i18n:name="label_sublinks_categories">
+                      <span i18n:translate="label_sublinks_categories"> </span>
+                  </span>
+              </span>
+              <a href="#" tal:attributes="href string:${Dict/urlMinusXsub}&xsub=ALL"
+                          tal:content="string: ALL">
+                ALL
+              </a>
+               || 
+              <span tal:repeat="subby python:test(useportalcatalogvalues,container.portal_catalog.uniqueValuesFor('Subject'),sublist)">
+                  <a href="#" tal:condition="python: usesubtitles"
+                              tal:attributes="href string:${Dict/urlMinusXsub}&xsub=$subby"
+                              tal:define="n repeat/subby/number"
+                              tal:content="python: subtitles[n-1]">
+                    Subject Name
+                  </a>
+                  <a href="#" tal:condition="python: not usesubtitles"
+                              tal:attributes="href string:${Dict/urlMinusXsub}&xsub=$subby"
+                              tal:define="n repeat/subby/number"
+                              tal:content="subby">
+                    Subject Name
+                  </a>
+                   || 
+              </span>
+
+            </span>
+          </form>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</span>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

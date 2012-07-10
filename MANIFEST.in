@@ -1,0 +1,2 @@
+recursive-include schooltime *
+global-exclude *pyc

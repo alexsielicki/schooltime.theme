@@ -1,0 +1,24 @@
+<a metal:define-macro="portal_logo"
+   id="portal-logo"
+   accesskey="1"
+   tal:attributes="href view/navigation_root_url"
+   i18n:domain="plone">
+    <img src="logo.jpg" alt=""
+         tal:replace="structure view/logo_tag" /></a>
+
+<div id="newsletter-signup"  
+	tal:define="content nocall:context/components/get-popejoy-updates|nothing;"
+	tal:condition="exists:context/components/get-popejoy-updates">
+
+    <h1 tal:content="content/Title|nothing">
+        Get Popejoy Updates
+    </h1>
+
+    <h3 tal:content="structure content/Description|nothing">
+	Last minute alerts, news and discounts
+    </h3>
+
+    <div tal:replace="structure content/getText|nothing">
+    </div>
+
+</div>

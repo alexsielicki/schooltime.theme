@@ -1,0 +1,55 @@
+<div id="portal-colophon" metal:define-macro="colophon" i18n:domain="plone">
+      <tal:comment replace="nothing">
+
+        Please keep the Plone Powered link (or the plone_powered.gif image) if you use
+        Plone on your site. It's a nice token of gratitude, and we appreciate your
+        help in promoting the Plone brand.
+
+        Plone is powered by the combined forces of Zope and CMF, two absolutely
+        great systems made by Zope Corporation (http://zope.com) and they in turn
+        are based on the best programming language in the world - Python
+        (http://www.python.org). We owe these guys a lot, thanks for making Plone
+        possible!
+
+      </tal:comment>
+
+      <metal:slot define-slot="colophon" />
+
+      <div class="colophonWrapper">
+
+<div id="colophon-content"  
+	tal:define="content nocall:context/components/footer-contents|nothing;"
+	tal:condition="exists:context/components/footer-contents"
+	tal:content="structure content/getText|nothing">
+	
+	
+</div>
+      <tal:disable tal:condition="nothing">
+      <div id="copyright">
+      Copyright
+      <span
+               tal:omit-tag=""
+               tal:define="now modules/DateTime/DateTime"
+               tal:content="now/year" />
+      by 
+      <a href="login_form" style="color: #666666; text-decoration: none; cursor: default;">Popejoy Presents</a>
+      </div>
+      </tal:disable>
+
+      
+      
+      <div id="fostermilo">
+      Site by <a href="http://fostermilo.com/">FosterMilo</a>
+      </div>
+      
+        <div class="hiddenStructure">
+          <a href="http://plone.org"
+             title="This site was built using Plone CMS, the Open Source Content Management System. Click for more information."
+             i18n:attributes="title title_built_with_plone;"
+             i18n:translate="label_powered_by_plone">
+            Powered by Plone</a>
+        </div>
+
+      </div>
+
+    </div>

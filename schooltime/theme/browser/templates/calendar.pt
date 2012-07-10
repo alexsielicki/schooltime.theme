@@ -1,0 +1,116 @@
+<dl class="portlet portletCalendar"
+    i18n:domain="plone"
+    tal:define="portal_url context/@@plone_portal_state/portal_url;
+                query_string view/getQueryString;
+                url_quote_plus nocall:view/url_quote_plus;
+                showPrevMonth view/showPrevMonth;
+                showNextMonth view/showNextMonth;
+                year view/year;">
+
+    <dt class="portletHeader">
+        <span class="portletTopLeft"></span>
+
+        <a href="#" rel="nofollow"
+           title="Previous month"
+           tal:define="prevMonthMonth view/prevMonthMonth;
+                       prevMonthYear view/prevMonthYear"
+           tal:attributes="id python:showPrevMonth and 'calendar-previous' or '';
+                           href python:'?%smonth:int=%d&amp;year:int=%d&amp;orig_query=%s' % (query_string, prevMonthMonth, prevMonthYear, url_quote_plus(query_string)); 
+                           class string:kssCalendarChange kssattr-year-${prevMonthYear} kssattr-month-${prevMonthMonth} calendarPrevious;"
+           tal:condition="showPrevMonth"
+           i18n:attributes="title title_previous_month;"><img src="prev.gif" alt="Previous month"
+                tal:attributes="src string:${portal_url}/prev.gif;"
+            /></a>
+
+        <a href="#" rel="nofollow"
+           title="Next month"
+           tal:define="nextMonthMonth view/nextMonthMonth;
+                       nextMonthYear view/nextMonthYear"
+           tal:attributes="id python:showNextMonth and 'calendar-next' or '';
+                           href python:'?%smonth:int=%d&amp;year:int=%d&amp;orig_query=%s' % (query_string, nextMonthMonth, nextMonthYear, url_quote_plus(query_string));
+                           class string:kssCalendarChange kssattr-year-${nextMonthYear} kssattr-month-${nextMonthMonth} calendarNext;"
+           tal:condition="showNextMonth"
+           i18n:attributes="title title_next_month;"><img src="next.gif" alt="Next month"
+                tal:attributes="src string:${portal_url}/next.gif;"
+            /></a>
+            
+        <span i18n:translate="" tal:omit-tag="">
+            <span i18n:name="monthname"
+                  tal:content="view/monthName"
+                  tal:omit-tag="">monthname</span>
+            <span i18n:name="year"
+                  tal:content="year"
+                  tal:omit-tag="">year</span>
+        </span>
+
+        <span class="portletTopRight"></span>
+    </dt>
+
+    <dd class="portletItem" 
+        tal:define="calendarTypes context/portal_calendar/getCalendarTypes;
+                    calendarTypesSearchString python: ''.join(['&portal_type%%3Alist=%s' % type for type in calendarTypes]);
+		    calX context/getLatestCalendarX|nothing;">
+        <table class="ploneCalendar"
+               summary="Calendar"
+               i18n:domain="plone"
+               i18n:attributes="summary summary_calendar;">
+            <caption class="hiddenStructure"
+                     tal:content="view/monthName">Month name</caption>
+            <thead>
+                <tr class="weekdays"
+                    ><tal:data tal:repeat="weekday view/getWeekdays"
+                        ><th scope="col"
+                             tal:content="python: weekday.default[0]">[first letter of weekday]</th
+                    ></tal:data>
+                </tr>
+            </thead>
+            <tbody>
+                <tr tal:repeat="week view/getEventsForCalendar"
+                    ><tal:block repeat="day week"
+                        ><tal:day define="daynumber day/day;"
+                            ><tal:isday condition="daynumber"
+                                ><tal:block define="day_event day/event;
+                                                    is_today day/is_today"
+                                    ><td class="event"
+                                        tal:condition="day_event"
+                                        tal:attributes="class python:is_today and 'todayevent' or 'event';"
+					
+                                       ><a href=""
+				       tal:define="date_for_calx python: day['date_string'].replace('-', '/');
+						    calXUrl calX/getURL|nothing;
+						    calXPath string:${calXUrl}/day?currentDate=${date_for_calx};
+						    basicPath string:${portal_url}/search?${view/getReviewStateString}start.query:record:list:date=${day/date_string}+23%3A59%3A59&amp;start.range:record=max&amp;end.query:record:list:date=${day/date_string}+00%3A00%3A00&amp;end.range:record=min&amp;${calendarTypesSearchString};
+						    href python: (calXUrl and [calXPath] or [basicPath])[0];
+						    href_original_for_search_not_calendarX string:${portal_url}/search?${view/getReviewStateString}start.query:record:list:date=${day/date_string}+23%3A59%3A59&amp;start.range:record=max&amp;end.query:record:list:date=${day/date_string}+00%3A00%3A00&amp;end.range:record=min&amp;${calendarTypesSearchString};"
+                                           tal:attributes="href href;
+                                                           title day/eventstring;"
+                                           tal:content="daynumber">
+                                           31
+                                       </a
+                                    ></td
+                                    ><tal:notdayevent tal:condition="not: day_event"
+                                        ><td tal:condition="python:is_today"
+                                        		tal:content="daynumber"
+                                             class="todaynoevent">31</td
+                                        ><td tal:condition="python:not is_today"
+                                             tal:content="daynumber">31</td
+                                    ></tal:notdayevent
+                                ></tal:block
+                            ></tal:isday
+                            ><tal:notisday condition="not: daynumber"
+                                ><td></td
+                            ></tal:notisday
+                        ></tal:day
+                    ></tal:block>
+                </tr>
+            </tbody>
+
+        </table>
+	<div id="full-cal" 
+	    tal:condition="calX">
+	    <a href="#" tal:attributes="href calX/getURL;">View Full Calendar</a>
+	</div>
+        <span class="portletBottomLeft"></span>
+        <span class="portletBottomRight"></span>
+    </dd>
+</dl>

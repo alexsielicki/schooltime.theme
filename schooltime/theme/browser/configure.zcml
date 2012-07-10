@@ -1,0 +1,136 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    xmlns:five="http://namespaces.zope.org/five"
+    i18n_domain="schooltime.theme">
+
+    <!-- 'Schooltime Theme' Zope 3 browser layer
+      Register views, viewlets and resources for this layer to make sure
+      they only apply to the 'Schooltime Theme' theme.
+      You can also use this layer to override default Plone browser views
+      and viewlets only within the 'Schooltime Theme' theme.
+      -->
+    <interface
+        interface=".interfaces.IThemeSpecific"
+        type="zope.publisher.interfaces.browser.IBrowserSkinType"
+        name="Schooltime Theme"
+        />
+
+    <!-- Viewlets registration -->
+<!-- EXAMPLE (UNCOMMENT TO MAKE AVAILABLE):
+     <browser:viewlet
+         name="schooltime.someviewlet"
+         manager="plone.app.layout.viewlets.interfaces.IPortalFooter"
+         class=".viewlets.SomeViewlet"
+         layer=".interfaces.IThemeSpecific"
+         permission="zope2.View"
+         />
+-->
+
+ <!-- Viewlets -->
+
+
+<browser:viewlet
+    name="plone.links.favicon"
+    manager="plone.app.layout.viewlets.interfaces.IHtmlHeadLinks"
+    class=".templates.viewlets.ThemedFaviconViewlet"
+    template="templates/favicon.pt"
+    layer=".interfaces.IThemeSpecific"
+    permission="zope2.View"
+    /> 
+ 
+<browser:viewlet
+    name="plone.logo"
+    manager="plone.app.layout.viewlets.interfaces.IPortalHeader"
+    class="plone.app.layout.viewlets.common.LogoViewlet"
+    template="templates/logo.pt"
+    layer=".interfaces.IThemeSpecific"
+    permission="zope2.View"
+    /> 
+
+<browser:viewlet
+    name="plone.colophon"
+    manager="plone.app.layout.viewlets.interfaces.IPortalFooter"
+    template="templates/colophon.pt"
+    layer=".interfaces.IThemeSpecific"
+    permission="zope2.View"
+    /> 
+
+<browser:viewlet
+    name="plone.footer"
+    manager="plone.app.layout.viewlets.interfaces.IPortalFooter"
+    template="templates/footer.pt"
+    layer=".interfaces.IThemeSpecific"
+    permission="zope2.View"
+    /> 
+ 
+<browser:viewlet
+    name="plone.global_sections"
+    manager="plone.app.layout.viewlets.interfaces.IPortalHeader"
+    class=".templates.common.GlobalSectionsViewlet"
+    template="templates/sections.pt"
+    layer=".interfaces.IThemeSpecific"
+    permission="zope2.View"
+    /> 
+
+<browser:viewlet
+    name="plone.abovecontenttitle.documentactions"
+    manager="plone.app.layout.viewlets.interfaces.IBelowContentBody"
+    class="plone.app.layout.viewlets.content.DocumentActionsViewlet"
+    template="templates/document_actions.pt"
+    layer=".interfaces.IThemeSpecific"
+    permission="zope2.View"
+    />    
+    
+<!-- Moved viewlet registration: moving breadcrumbs viewlet -->
+    <browser:viewlet
+        name="plone.path_bar"
+        manager="plone.app.layout.viewlets.interfaces.IContentViews"
+        class="plone.app.layout.viewlets.common.PathBarViewlet"
+        permission="zope2.View"
+        layer=".interfaces.IThemeSpecific"
+        />
+
+
+
+<!-- Portlets -->
+<include package="plone.app.portlets" />
+<plone:portletRenderer
+    portlet="plone.app.portlets.portlets.search.ISearchPortlet"
+    template="templates/search.pt"
+    layer=".interfaces.IThemeSpecific"
+    />
+
+<plone:portletRenderer
+    portlet="plone.app.portlets.portlets.calendar.ICalendarPortlet"
+    template="templates/calendar.pt"
+    layer=".interfaces.IThemeSpecific"
+    />
+
+
+    <!-- Zope 3 browser resources -->
+
+    <!-- Resource directory for images
+      See schooltime/theme/browser/images/README.txt
+      for more information about registering images as Zope 3 browser
+      resources.
+      -->
+    <browser:resourceDirectory
+        name="schooltime.theme.images"
+        directory="images"
+        layer=".interfaces.IThemeSpecific"
+        />
+
+    <!-- Resource directory for stylesheets
+      See schooltime/theme/browser/stylesheets/README.txt
+      for more information about registering stylesheets as Zope 3 browser
+      resources.
+      -->
+    <browser:resourceDirectory
+        name="schooltime.theme.stylesheets"
+        directory="stylesheets"
+        layer=".interfaces.IThemeSpecific"
+        />
+
+</configure>
