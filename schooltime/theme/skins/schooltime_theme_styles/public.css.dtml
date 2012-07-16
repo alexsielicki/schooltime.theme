@@ -320,7 +320,11 @@ body.kssActive h1.formlibInlineEditable:hover {
 #portal-siteactions li {
     display: inline;
     margin: 0;
-    padding: 0;
+    padding: 0 0.5em 0 1em;
+    border-left: 1px solid black;
+}
+#portal-siteactions li:first-child {
+    border-left-width: 0px;
 }
 #portal-siteactions li a {
     background-color: transparent;
@@ -329,7 +333,7 @@ body.kssActive h1.formlibInlineEditable:hover {
     padding: 0.2em;
     margin-right: 0.2em;
     text-decoration: none;
-    text-transform: &dtml-textTransform;;
+    text-transform: uppercase;
     line-height: 53px;
 }
 #portal-siteactions li.selected a {

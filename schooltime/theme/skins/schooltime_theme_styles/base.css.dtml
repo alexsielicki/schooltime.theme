@@ -30,9 +30,12 @@ body {
 #visual-portal-wrapper-two {
     
 }
+/* Background image for all pages */
+/*
 #visual-portal-wrapper-three {
     background: transparent url(&dtml-portal_url;/main-background.jpg) no-repeat center bottom;
 }
+*/
 table {
     font-size: 100%;
 }
