@@ -90,11 +90,11 @@ window.addEvent('domready', startGallery);
 		    currentSeasonUrl currentSeason/getURL|nothing;" 
 	tal:attributes="href currentSeasonUrl">View full season</a>
 </li>
-<li><a href="/tickets/season-tickets" tal:attributes="href string:${portal_url}/tickets/season-tickets">Buy season tickets</a>
+<li><a href="/tickets/season-tickets" tal:attributes="href string:${portal_url}/tickets/season-tickets">Buy tickets</a>
 </li>
 </ul>
 
-<h2>Upcoming Shows</h2>
+<h2>Upcoming</h2>
 
 <div id="performance-listing-homepage"
 	tal:define="performances context/getHomepageUpcomingShows"

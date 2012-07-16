@@ -73,17 +73,20 @@ body.kssActive h1.formlibInlineEditable:hover {
 	position: relative;
 }
 #homepage-body-text {
+/*
 	height: 280px;
 	overflow: hidden;
 	width: 317px;
 	padding-left: 0px;
 	margin-top: 20px;
+*/
 }
 #homepage-body-text h2 {
 	font-size: 22px;
 	color: &dtml-deepRedColor;;
 }
 #homepage-this-season-wrapper {
+/*
 	position: absolute;
 	top: 320px;
 	left: 323px;
@@ -95,6 +98,7 @@ body.kssActive h1.formlibInlineEditable:hover {
 	border-radius: 8px 0px 0px 0px;
 	-moz-border-radius: 8px 0px 0px 0px;
 	-webkit-border-radius: 8px 0px 0px 0px;
+*/
 }
 #homepage-this-season {
 	height: 100%;
