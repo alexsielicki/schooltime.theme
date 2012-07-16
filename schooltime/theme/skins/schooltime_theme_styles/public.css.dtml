@@ -236,7 +236,9 @@ body.kssActive h1.formlibInlineEditable:hover {
 #portal-logo img {
     border: 0;
     padding: 0;
-    margin: 20px 0px 15px 15px;
+    margin: 20px 0px 0px 15px;
+    position: relative;
+    z-index: 10;
 }
 
 /* Newsletter signup form */
@@ -307,7 +309,9 @@ body.kssActive h1.formlibInlineEditable:hover {
 
 /* Site-wide action menu - font size, contact, index, sitemap etc */
 #portal-siteactions {
+    /*
     background: transparent url(&dtml-portal_url;/donate-bg.gif) no-repeat right top;
+    */
     white-space: nowrap;
     list-style-image: none;
     list-style-type: none;
@@ -316,6 +320,10 @@ body.kssActive h1.formlibInlineEditable:hover {
     line-height: normal;
     float: right;
     padding: 0;
+    position: relative;
+    top: 130px;
+    right: 20px;
+    z-index: 10;
 }
 #portal-siteactions li {
     display: inline;
@@ -362,7 +370,7 @@ body.kssActive h1.formlibInlineEditable:hover {
     float: right;
     clear: right;
     background-color: transparent;
-    margin: 1.5em 0 0 0;
+    margin: 2em 0 0 0;
     padding: 0 2em 0 0;
     text-align: right;
     text-transform: &dtml-textTransform;;
@@ -514,8 +522,8 @@ form.searchPage input.searchButton {
 
 /* The global section tabs. */
 #portal-globalnav {
-    background: transparent url(&dtml-portal_url;/subnav.gif) no-repeat left top;
-    padding: 0em 0em 0em 0em;
+    background: transparent url(&dtml-portal_url;/navigation.png) no-repeat left top;
+    padding: 35px 0em 0em 0em;
     white-space: nowrap;
     list-style: none;
     margin: 0;
@@ -525,9 +533,10 @@ form.searchPage input.searchButton {
     height: 103px;
     margin-left: -13px;
     position: absolute;
-    top: 175px;
+    top: 140px;
     left: 0px;
 }
+/*
 .section-front-page #portal-globalnav,
 .section-now-playing #portal-globalnav,
 .template-season_view #portal-globalnav,
@@ -548,6 +557,7 @@ form.searchPage input.searchButton {
 {
     height: 253px;
 }
+*/
 #portal-globalnav li {
     display: block;
     float: left;

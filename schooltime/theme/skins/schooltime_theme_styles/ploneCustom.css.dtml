@@ -220,7 +220,7 @@ body.atrefbrowser {
     width: 200px;
 }
 #portal-searchbox .searchButton {
-    background: url("search_icon.png") no-repeat scroll center center #FFFFFF;
+    background: url(&dtml-portal_url;/search_icon.png) no-repeat scroll center center #FFFFFF;
     border: medium none;
     color: #000000;
     cursor: pointer;
