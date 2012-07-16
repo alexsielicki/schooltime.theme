@@ -18,21 +18,12 @@ body.smallText { font-size: 60%; }
 }
 #portal-column-two .visualPadding {
     padding: 10px;
-    background-color: black;
-    border-right: 1px solid #a10000;
-    border-radius: 0px 0px 0px 8px;
-    -moz-border-radius: 0px 0px 0px 8px;
-    -webkit-border-radius: 0px 0px 0px 8px;
 }
 .section-front-page #portal-column-two .visualPadding {
+/*     
     position: relative;
     height: 280px;
-    border-right-width: 0;
-    border-left: 1px solid #a10000;
-    border-radius: 0px 0px 8px 0px;
-    -moz-border-radius: 0px 0px 8px 0px;
-    -webkit-border-radius: 0px 0px 8px 0px;
-    /* height: 185px; */
+    height: 185px; */
 }
 
 /* Content area */
@@ -228,7 +219,7 @@ body.kssActive h1.formlibInlineEditable:hover {
     margin: 0 auto;
     padding: 0;
     color: &dtml-fontColor;;
-    width: 913px;
+    width: 910px;
     position: relative;
 }
 
@@ -301,10 +292,8 @@ body.kssActive h1.formlibInlineEditable:hover {
     -webkit-border-radius: 8px 8px 0 0;
 }
 #portal-header {
-	/* background: transparent url(&dtml-portal_url;/header-swirl.png) no-repeat 400px 200px; */
 	position: relative;
-	height: 255px;
-	height: 290px; /* temp */
+	height: 231px;
 }
 
 /* Site-wide action menu - font size, contact, index, sitemap etc */
@@ -522,7 +511,7 @@ form.searchPage input.searchButton {
 
 /* The global section tabs. */
 #portal-globalnav {
-    background: transparent url(&dtml-portal_url;/navigation.png) no-repeat left top;
+    background: transparent url(&dtml-portal_url;/navigation.png) no-repeat 3px top;
     padding: 35px 0em 0em 0em;
     white-space: nowrap;
     list-style: none;
@@ -530,7 +519,7 @@ form.searchPage input.searchButton {
     line-height: normal;
     overflow: hidden;
     width: 939px;
-    height: 103px;
+    height: 56px;
     margin-left: -13px;
     position: absolute;
     top: 140px;
