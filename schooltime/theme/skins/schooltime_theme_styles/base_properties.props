@@ -2,7 +2,7 @@ title:string=Schooltime Theme's color, font, logo and border defaults
 
 plone_skin:string=Schooltime Theme
 
-logoName:string=logo.gif
+logoName:string=logo.png
 
 fontFamily:string=Arial, Helvetica, Lucida, sans-serif
 fontBaseSize:string=12px
