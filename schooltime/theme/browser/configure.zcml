@@ -30,6 +30,15 @@
 
  <!-- Viewlets -->
 
+<!-- The search box in the header -->
+<browser:viewlet
+    name="plone.searchbox"
+    manager="plone.app.layout.viewlets.interfaces.IPortalHeader"
+    class="plone.app.layout.viewlets.common.SearchBoxViewlet"
+    template="templates/searchbox.pt"
+    layer=".interfaces.IThemeSpecific"
+    permission="zope2.View"
+    /> 
 
 <browser:viewlet
     name="plone.links.favicon"

@@ -202,4 +202,33 @@ body.atrefbrowser {
 .template-event_view .image-left {
     clear: left;
 }
+
+#portal-searchbox .searchSection {
+    display: none;
+}
+.LSBox {
+    background-color: white;
+    padding: 5px;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+}
+#portal-searchbox #searchGadgetNoLivesearch {
+    border-width: 0;
+    margin-left: 6px;
+    font-style: italic;
+}
+#portal-searchbox .searchButton {
+    background: url("search_icon.png") no-repeat scroll center center #FFFFFF;
+    border: medium none;
+    color: #000000;
+    cursor: pointer;
+    height: 24px;
+    line-height: 1.8;
+    margin: 0;
+    padding: 0;
+    text-indent: -2000em;
+    width: 29px;
+}
+
 /* </dtml-with> */
