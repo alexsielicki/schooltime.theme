@@ -234,5 +234,15 @@ body.atrefbrowser {
 .LSResult {
     display: none;
 }
+#calendar-title {
+    text-shadow: -1px -1px white;
+    background: url(&dtml-portal_url;/calendar-background.png) no-repeat scroll center top #ffd04b;
+    font-weight: normal;
+    font-size: 20px;
+    border: 6px solid #ffd04b;
+    border-bottom-width: 0px;
+    line-height: 40px;
+}
+
 
 /* </dtml-with> */

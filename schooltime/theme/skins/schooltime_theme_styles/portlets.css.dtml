@@ -197,11 +197,11 @@
     display: none;
 }
 .portletCalendar dt {
-    background: #fab300 url(&dtml-portal_url;/pattern.gif) repeat center top;
+    background: transparent;
     font-weight: bold;
     text-align: center;
     line-height: 19px;
-    border: 2px solid #fab300;
+    border-width: 0px;
     font-size: 13px;
     text-transform: uppercase;
     padding: 0px 10px;

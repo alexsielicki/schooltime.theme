@@ -38,7 +38,7 @@
 }
 #portal-column-two {
     vertical-align: top;
-    width: <dtml-var columnTwoWidth missing="16em">;
+    width: 310px;
     border-collapse: collapse;
     padding: 0;    
 }

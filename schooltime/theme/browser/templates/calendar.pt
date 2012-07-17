@@ -6,7 +6,7 @@
                 showPrevMonth view/showPrevMonth;
                 showNextMonth view/showNextMonth;
                 year view/year;">
-
+    <dt id="calendar-title">Calendar</dt>
     <dt class="portletHeader">
         <span class="portletTopLeft"></span>
 
@@ -18,8 +18,8 @@
                            href python:'?%smonth:int=%d&amp;year:int=%d&amp;orig_query=%s' % (query_string, prevMonthMonth, prevMonthYear, url_quote_plus(query_string)); 
                            class string:kssCalendarChange kssattr-year-${prevMonthYear} kssattr-month-${prevMonthMonth} calendarPrevious;"
            tal:condition="showPrevMonth"
-           i18n:attributes="title title_previous_month;"><img src="prev.gif" alt="Previous month"
-                tal:attributes="src string:${portal_url}/prev.gif;"
+           i18n:attributes="title title_previous_month;"><img src="prev.png" alt="Previous month"
+                tal:attributes="src string:${portal_url}/prev.png;"
             /></a>
 
         <a href="#" rel="nofollow"
@@ -30,8 +30,8 @@
                            href python:'?%smonth:int=%d&amp;year:int=%d&amp;orig_query=%s' % (query_string, nextMonthMonth, nextMonthYear, url_quote_plus(query_string));
                            class string:kssCalendarChange kssattr-year-${nextMonthYear} kssattr-month-${nextMonthMonth} calendarNext;"
            tal:condition="showNextMonth"
-           i18n:attributes="title title_next_month;"><img src="next.gif" alt="Next month"
-                tal:attributes="src string:${portal_url}/next.gif;"
+           i18n:attributes="title title_next_month;"><img src="next.png" alt="Next month"
+                tal:attributes="src string:${portal_url}/next.png;"
             /></a>
             
         <span i18n:translate="" tal:omit-tag="">
