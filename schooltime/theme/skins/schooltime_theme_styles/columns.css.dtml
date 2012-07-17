@@ -38,7 +38,7 @@
 }
 #portal-column-two {
     vertical-align: top;
-    width: 310px;
+    width: 325px;
     border-collapse: collapse;
     padding: 0;    
 }

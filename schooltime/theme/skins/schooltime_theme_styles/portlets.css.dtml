@@ -180,7 +180,7 @@
     width: 100%;
     margin: 0;
     width: 100%;
-    /* background: &dtml-portletBackgroundColor; url(&dtml-portal_url;/homepage-portlet-background.png) repeat-x top left; */
+    background: transparent url(&dtml-portal_url;/calendar-body-background.png) no-repeat center bottom;
     color: black;
     border-width: 0px;
 }
@@ -198,14 +198,17 @@
 }
 .portletCalendar dt {
     background: transparent;
-    font-weight: bold;
+    font-weight: normal;
     text-align: center;
     line-height: 19px;
     border-width: 0px;
-    font-size: 13px;
+    font-size: 15px;
     text-transform: uppercase;
-    padding: 0px 10px;
+    padding: 0px 30px;
     color: #020307;
+}
+.portletCalendar dt.portletHeader {
+    padding: 10px 30px 20px 30px;
 }
 .portletCalendar #calendar-previous,
 .portletCalendar #calendar-next
@@ -235,7 +238,7 @@
 }
 .portletCalendar dd {
     margin: 0;
-    padding: 0 0px 0px 0px;
+    padding: 0px 20px 0px 20px;
     border-width: 0px;
 }
 .portletCalendar a {
@@ -248,9 +251,6 @@
     /* border-collapse: collapse; */
     border-spacing: 2px;
     width: 100%;
-    border-color: #fab300;
-    border-style: solid;
-    border-width: 0px 2px 2px 2px;
 }
 .ploneCalendar td {
     background-color: #dbdbdb;

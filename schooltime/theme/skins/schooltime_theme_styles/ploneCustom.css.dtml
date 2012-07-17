@@ -129,21 +129,17 @@ TABLE.cal TH {
 
 /* Cal Portlet */
 #full-cal {
-    text-align: right;
-    text-transform: lowercase;
+    text-align: center;
+    text-transform: capitalize;
     margin: 0px;
-    background-color: black;
 }
 #full-cal a {
     display: inline-block;
-    background-color: #FAB300;
-    padding: 0px 10px 1px 10px;
-    color: #020307;
-    font-size: 11px;
+    padding: 0px 10px 0px 10px;
+    color: #322f78;
+    font-size: 12px;
     font-weight: bold;
-    border-radius: 0px 0px 8px 8px;
-    -moz-border-radius: 0px 0px 8px 8px;
-    -webkit-border-radius: 0px 0px 8px 8px;
+    line-height: 71px;
 }
 
 .runTimeLabel {
@@ -242,6 +238,7 @@ body.atrefbrowser {
     border: 6px solid #ffd04b;
     border-bottom-width: 0px;
     line-height: 40px;
+    margin: 0px 8px 0px 7px;
 }
 
 
