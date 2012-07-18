@@ -34,7 +34,7 @@
     margin: 0em 0em 2em 0em;
 }
 .section-front-page #portal-column-content {
-	padding: 13px 0 0 13px;
+	padding: 13px 0 0 13px; 
 }
 #portal-column-two {
     vertical-align: top;
