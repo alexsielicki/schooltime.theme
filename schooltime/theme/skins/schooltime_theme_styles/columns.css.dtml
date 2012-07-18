@@ -30,15 +30,15 @@
 #portal-column-content {
     vertical-align: top;
     border-collapse: collapse;
-    padding: 1em 6px 0 6px;
+    padding: 13px 6px 0 13px;
     margin: 0em 0em 2em 0em;
 }
 .section-front-page #portal-column-content {
-	padding: 1em 0 0 6px;
+	padding: 13px 0 0 13px;
 }
 #portal-column-two {
     vertical-align: top;
-    width: 325px;
+    width: 320px;
     border-collapse: collapse;
     padding: 0;    
 }

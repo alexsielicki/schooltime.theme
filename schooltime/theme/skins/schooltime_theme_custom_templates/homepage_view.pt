@@ -81,6 +81,7 @@ window.addEvent('domready', startGallery);
         </metal:field>
 </div>
 
+<tal:disable tal:condition="nothing">
 <div id="homepage-this-season-wrapper">
 <div id="homepage-this-season">
 
@@ -125,6 +126,7 @@ window.addEvent('domready', startGallery);
 
 </div>
 </div>
+</tal:disable>
 
         <div metal:use-macro="here/document_relateditems/macros/relatedItems">
             show related items if they exist
