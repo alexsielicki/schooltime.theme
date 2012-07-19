@@ -85,6 +85,11 @@ body.kssActive h1.formlibInlineEditable:hover {
 	margin-top: 20px;
 */
 }
+#homepage-body-text .image-left {
+    margin-top: 0;
+    -webkit-box-shadow:  0px 0px 4px 0px rgba(0, 0, 0, 0.7);
+    box-shadow:  0px 0px 4px 0px rgba(0, 0, 0, 0.7);
+}
 #homepage-body-text h2 {
 	font-size: 28px;
 	color: #f41d4e;
@@ -1197,16 +1202,10 @@ textarea.proportional {
 }
 #portal-footer #homepage-bottom-wrapper {
     border: 1px solid #c5d4cf; /* blue/green */
-    border-radius: 8px;
-    -moz-border-radius: 8px;
-    -webkit-border-radius: 8px;
-    background: transparent url(&dtml-portal_url;/3-boxes-bg.png) repeat-x center top;
+    background: white url(&dtml-portal_url;/footer-bg.png) repeat-x center top;
 }
 #portal-footer #homepage-bottom-wrapper-inner {
-    border: 1px solid white;
-    border-radius: 8px;
-    -moz-border-radius: 8px;
-    -webkit-border-radius: 8px;
+    
 }
 #portal-footer #homepage-bottom {
 	width: 100%;
@@ -1218,28 +1217,29 @@ textarea.proportional {
 	padding: 0 20px 0px 20px;
 	margin: 0;
 	width: 33%;
-	border-right: 1px solid #C5D4CF;
-	border-left: 1px solid white;
 }
 #portal-footer #homepage-bottom td:first-child {
-    border-left-width: 0;
 }
 #portal-footer #homepage-bottom td:last-child {
-    border-right-width: 0;
+    padding-right: 2px;
+}
+#portal-footer #homepage-bottom img {
+    border: 2px solid white;
+    margin: 10px;
+    -webkit-box-shadow:  0px 0px 4px 0px rgba(0, 0, 0, 0.7);
+    box-shadow:  0px 0px 4px 0px rgba(0, 0, 0, 0.7);
 }
 #portal-footer p {
     margin: 0.25em 0;
 }
 #portal-footer h2 {
 	font-size: 22px;
-	color: #1d374e;
+	color: #09345e;
 	line-height: 35px;
 	padding: 0;
-	text-shadow: white 1px 1px;
-	text-transform: uppercase;
 }
 #portal-footer h2 a {
-    color: #1d374e !important;
+    color: #09345e !important;
 }
 #portal-footer h2 a:hover {
     text-decoration: none;
@@ -1251,7 +1251,7 @@ textarea.proportional {
     line-height: 15px;
 }
 #portal-footer li {
-    margin: 1.5em 0;
+    margin: 1em 0;
 }
 #portal-footer a {
     color: #020307;

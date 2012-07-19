@@ -34,7 +34,10 @@
     margin: 0em 0em 2em 0em;
 }
 .section-front-page #portal-column-content {
-	padding: 13px 0 0 13px; 
+	padding: 13px 13px 0 13px; 
+}
+.section-front-page .contentActions {
+    width: 563px;
 }
 #portal-column-two {
     vertical-align: top;
@@ -43,9 +46,8 @@
     padding: 0;    
 }
 .section-front-page #portal-column-two {
-    /*
-    padding-right: 6px;
-    */
+    position: absolute;
+    right: 0px;
 }
 
 /* fullscreen */

@@ -185,13 +185,11 @@
     border-width: 0px;
 }
 .section-front-page .portletCalendar {
-	/*
-	position: absolute;
-	background: transparent none;
-	top: 230px;
-	right: 10px;
-	width: 200px;
-	*/
+/*
+    position: absolute;
+    width: 305px;
+    left: 600px;
+*/
 }
 .ploneCalendar caption {
     display: none;
