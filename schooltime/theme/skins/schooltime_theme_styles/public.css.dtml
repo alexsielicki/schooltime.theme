@@ -1189,7 +1189,7 @@ textarea.proportional {
     background-color: &dtml-backgroundColor;;
     float: none;
     line-height: 1.2em;
-    padding: 20px 6px 27px 6px;
+    padding: 20px 13px 27px 13px;
     display: none;
     border-radius: 0 0 8px 8px;
     -moz-border-radius: 0 0 8px 8px;
@@ -1201,8 +1201,7 @@ textarea.proportional {
 	display: block;
 }
 #portal-footer #homepage-bottom-wrapper {
-    border: 1px solid #c5d4cf; /* blue/green */
-    background: white url(&dtml-portal_url;/footer-bg.png) repeat-x center top;
+    
 }
 #portal-footer #homepage-bottom-wrapper-inner {
     
@@ -1211,6 +1210,8 @@ textarea.proportional {
 	width: 100%;
 	/* border-collapse: collapse; */
 	border-spacing: 0;
+	border: 1px solid #c5d4cf; /* blue/green */
+	background: white url(&dtml-portal_url;/footer-bg.png) repeat-x center top;
 }
 #portal-footer #homepage-bottom td {
 	vertical-align: top;
@@ -1280,6 +1281,26 @@ textarea.proportional {
 }
 #portal-footer .visualHighlight a:hover {
     text-decoration: none;
+}
+#portal-footer #homepage-sponsors {
+    border-top: 1px solid #d9d9d9;
+    background: white url(&dtml-portal_url;/sponsors-bg.png) repeat-x center 1px;
+    width: 100%;
+}
+#portal-footer .callout {
+    text-align: right;
+    padding: 0;
+    margin: 0 0 20px 0;
+}
+#portal-footer .callout a {
+    background-color: #ffd04a;
+    color: #282525;
+    display: inline-block;
+    line-height: 25px;
+    padding: 0 25px;
+    border-radius: 0 0 10px 10px;
+    -moz-border-radius: 0 0 10px 10px;
+    -webkit-border-radius: 0 0 10px 10px;
 }
 #portal-colophon {
     float: none;
