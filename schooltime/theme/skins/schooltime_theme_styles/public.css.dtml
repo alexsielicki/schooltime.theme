@@ -101,11 +101,15 @@ body.kssActive h1.formlibInlineEditable:hover {
     color: #322f78;
     font-size: 20px;
     margin-bottom: 0;
+    margin-top: 0;
 }
 #homepage-body-text .discreet {
     color: #e82d3f;
     font-size: 12px;
     text-transform: uppercase;
+}
+#homepage-body-text td {
+    vertical-align: top;
 }
 #homepage-this-season-wrapper {
 /*
