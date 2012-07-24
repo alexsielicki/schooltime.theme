@@ -13,13 +13,13 @@
                tal:attributes="href tab/url;
                                title tab/description|nothing">
             Tab Name
-            </a><tal:selected tal:condition="is_selected"><ul 
+            </a><tal:block tal:condition="nothing"><tal:selected tal:condition="is_selected"><ul 
 		id="subtabs" 
 		tal:define="subtabs python: view.getsubtabs(context, tab);"
 		tal:condition="subtabs"><li tal:repeat="subtab subtabs"
 		><a href="#" tal:content="subtab/name"
 			tal:attributes="href subtab/url;">[Subtab]</a></li
-			></ul></tal:selected></li></tal:tabs></ul>
+			></ul></tal:selected></tal:block></li></tal:tabs></ul>
 
     <tal:block tal:condition="nothing">
     <tal:block

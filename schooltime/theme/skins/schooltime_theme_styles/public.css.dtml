@@ -14,7 +14,7 @@ body.smallText { font-size: 60%; }
 /* Padding for the columns */
 
 #portal-column-one .visualPadding {
-    padding: 2em 0em 1em 2em;
+    padding: 13px 10px 10px 5px;
 }
 #portal-column-two .visualPadding {
     padding: 13px 5px 10px 10px;
@@ -1308,7 +1308,7 @@ textarea.proportional {
 #portal-colophon {
     float: none;
     margin: 0 0 0 0;
-    padding: 0 0 1em 0;
+    padding: 0 13px 1em 13px;
     color: white;
     position: relative;
     background: transparent url(&dtml-portal_url;/colophon-background.png) center top no-repeat;

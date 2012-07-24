@@ -24,6 +24,7 @@
     list-style: none !important;
     list-style-image: none !important; 
     line-height: 1em;
+    margin: 0 8px 1em 7px;
 }
 .navTree {
     list-style: none; 
