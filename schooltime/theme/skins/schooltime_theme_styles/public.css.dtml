@@ -1312,12 +1312,11 @@ textarea.proportional {
     float: none;
     margin: 0 0 0 0;
     padding: 0 0 1em 0;
-    color: #c5d4cf;
-    height: 340px;
+    color: white;
     position: relative;
 }
 #portal-colophon a {
-	color: #83979e;
+	color: white;
 	text-decoration: none;
 }
 #portal-colophon a:hover {
@@ -1337,7 +1336,7 @@ textarea.proportional {
     font-weight: bold;
 }
 #portal-colophon .colophonWrapper {
-	padding: 55px 0 0 0;
+	padding: 15px 0 0 0;
 }
 #portal-colophon h1,
 #portal-colophon h2,
@@ -1397,20 +1396,23 @@ td#footer-right {
     margin: 0;
 }
 #portal-colophon ul li {
-    /* display: inline !important; */
-    font-size: 11px;
-    padding: 0 0 0 0;
-    border-bottom: 1px solid #83979e;
-    margin: 1.2em 0 0 0;
+    display: inline-block !important;
+    font-size: 12px;
+    margin: 0 0 0 0;
+    padding: 0px 10px 0px 10px;
+    border-left: 1px solid white;
+}
+#portal-colophon ul li:first-child {
+    border-left-width: 0px;
 }
 #portal-colophon ul li a {
     text-decoration: none;
-    color: #83979e;
+    color: white;
     display: block;
 }
 #portal-colophon ul li a:hover {
-    text-decoration: none;
-    color: #c5d4cf;
+    text-decoration: underline;
+    color: white;
 }
 #colophon-content {
 	margin-bottom: 14px;
@@ -1419,6 +1421,7 @@ td#footer-right {
 #portal-colophon #fostermilo 
 {
     text-align: right;
+    clear: both;
 }
 
 .feedButton {

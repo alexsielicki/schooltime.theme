@@ -240,6 +240,32 @@ body.atrefbrowser {
     line-height: 40px;
     margin: 0px 8px 0px 7px;
 }
-
-
+#portal-colophon p {
+    float: left;
+    clear: left;
+}
+#portal-colophon p a,
+#portal-colophon p a:hover
+{
+    color: white;
+    text-decoration: underline;
+}
+#portal-colophon ul {
+    float: right;
+    clear: right;
+}
+#portal-colophon pre {
+    float: right;
+    clear: right;
+    background-color: transparent;
+    border-width: 0;
+}
+#portal-colophon h3 {
+    font-family: 'Princess Sofia', cursive;
+    border-width: 0;
+    color: #ffd04a;
+    font-size: 31px;
+    text-transform: none;
+    padding-bottom: 25px;
+}
 /* </dtml-with> */
