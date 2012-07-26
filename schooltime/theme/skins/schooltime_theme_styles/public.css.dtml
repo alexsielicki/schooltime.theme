@@ -112,6 +112,9 @@ h2
     margin-top: 0;
     font-weight: normal;
 }
+h2 {
+    margin-top: 0.75em;
+}
 h3 {
     color: #322F78;
 }
