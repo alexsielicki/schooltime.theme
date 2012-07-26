@@ -92,18 +92,28 @@ body.kssActive h1.formlibInlineEditable:hover {
     -webkit-box-shadow:  0px 0px 4px 0px rgba(0, 0, 0, 0.7);
     box-shadow:  0px 0px 4px 0px rgba(0, 0, 0, 0.7);
 }
-#homepage-body-text h2 {
+#homepage-body-text h2,
+h1
+{
 	font-size: 28px;
 	color: #f41d4e;
 	text-transform: uppercase;
 	border-bottom: 1px solid #FFBD02;
 	padding-bottom: 6px;
+	font-weight: normal;
+	margin-bottom: 21px;
 }
-#homepage-body-text h3 {
+#homepage-body-text h3,
+h2
+{
     color: #322f78;
     font-size: 20px;
     margin-bottom: 0;
     margin-top: 0;
+    font-weight: normal;
+}
+h3 {
+    color: #322F78;
 }
 #homepage-body-text .discreet {
     color: #e82d3f;
@@ -911,9 +921,10 @@ dl.error dd {
     display: block;
     margin: 0em 0em 0.5em 0em;
     line-height: 1.5em;
-    font-size: 16px;
-    color: &dtml-deepRedColor;;
-    font-style: italic;
+    
+    color: #E82D3F;
+    font-size: 12px;
+    text-transform: uppercase;
 }
 .documentByLine {
     font-size: &dtml-fontSmallSize;;
