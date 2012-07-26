@@ -62,7 +62,7 @@ body.kssActive h1.formlibInlineEditable:hover {
     padding-right: 10px !important;;
 }
 #myGallery {
-	width: 621px;
+	width: 573px;
 	height: 300px;
 	overflow: hidden;
 }
