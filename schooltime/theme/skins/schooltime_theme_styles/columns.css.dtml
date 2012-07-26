@@ -20,14 +20,14 @@
 }
 #portal-column-one {
     vertical-align: top;
-    width: 320px;
+    width: 310px;
     border-collapse: collapse;
     padding: 0;
 }
 #portal-column-content {
     vertical-align: top;
     border-collapse: collapse;
-    padding: 13px 6px 0 13px;
+    padding: 13px 6px 0 0px;
     margin: 0em 0em 2em 0em;
 }
 .section-front-page #portal-column-content {
