@@ -19,10 +19,10 @@
 
 body {
     font: &dtml-fontBaseSize; <dtml-var fontFamily>;
-    background-color: #322E7A;
     color: &dtml-fontColor;;
     margin: 0;
     padding: 0;
+    background: #d5225e url(&dtml-portal_url;/background-schooltime.jpg) no-repeat center top;
 }
 #visual-portal-wrapper-one {
     
