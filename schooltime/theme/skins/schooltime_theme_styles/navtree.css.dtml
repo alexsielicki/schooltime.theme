@@ -25,6 +25,10 @@
     list-style-image: none !important; 
     line-height: 1em;
     margin: 0 8px 1em 7px;
+    border-top: &dtml-borderWidth; &dtml-borderStyle; &dtml-globalBorderColor;;
+}
+.portletNavigationTree .portletHeader {
+    display: none;
 }
 .navTree {
     list-style: none; 
@@ -44,13 +48,15 @@ dd.portletItem .navTreeItem a {
     border: &dtml-borderWidth; &dtml-borderStyle; &dtml-backgroundColor;;
     display: block;
     text-decoration: none;
-    padding-top: 0.2em;
-    padding-bottom: 0.25em;
+    padding: 0.2em 5px 0.25em 5px;
+    text-transform: uppercase;
+    color: black;
+    font-size: 15px;
 }
 .navTreeItem a:hover,
 dd.portletItem .navTreeItem a:hover {
     background-color: &dtml-globalBackgroundColor;;
-    color: &dtml-globalFontColor;;
+    color: black;
     border: &dtml-borderWidth; &dtml-borderStyle; &dtml-globalBorderColor;;
 }
 .navTreeCurrentItem {

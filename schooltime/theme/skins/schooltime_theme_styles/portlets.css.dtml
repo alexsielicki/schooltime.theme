@@ -178,7 +178,7 @@
 
 .portletCalendar {
     width: 100%;
-    margin: 0;
+    margin: 0 0 20px 0;
     width: 100%;
     background: transparent url(&dtml-portal_url;/calendar-body-background.png) no-repeat center bottom;
     color: black;
