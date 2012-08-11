@@ -104,9 +104,10 @@ h1
 	margin-bottom: 21px;
 }
 #homepage-body-text h3,
+#homepage-body-text h3 a,
 h2
 {
-    color: #322f78;
+    color: #322f78 !important;
     font-size: 20px;
     margin-bottom: 0;
     margin-top: 0;
