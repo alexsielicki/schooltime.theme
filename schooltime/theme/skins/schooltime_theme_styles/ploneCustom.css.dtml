@@ -268,4 +268,7 @@ body.atrefbrowser {
     text-transform: none;
     padding-bottom: 25px;
 }
+#past-shows .tileItem {
+    clear: left;
+}
 /* </dtml-with> */
