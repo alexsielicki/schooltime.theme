@@ -22,7 +22,7 @@ body {
     color: &dtml-fontColor;;
     margin: 0;
     padding: 0;
-    background: #d5225e url(&dtml-portal_url;/background-schooltime.jpg) no-repeat center top;
+    background: #FFD14A url(&dtml-portal_url;/2014chlkbdbckgrd.png) no-repeat center top;
 }
 #visual-portal-wrapper-one {
     

@@ -1326,17 +1326,17 @@ textarea.proportional {
     float: none;
     margin: 0 0 0 0;
     padding: 0 13px 1em 13px;
-    color: white;
+    color: black;
     position: relative;
     background: transparent url(&dtml-portal_url;/colophon-background.png) center top no-repeat;
 }
 #portal-colophon a {
-	color: white;
+	color: black;
 	text-decoration: none;
 }
 #portal-colophon a:hover {
 	text-decoration: underline;
-	color: #c5d4cf;
+	color: black;
 }
 #portal-colophon p,
 #footer-table p
@@ -1415,19 +1415,19 @@ td#footer-right {
     font-size: 12px;
     margin: 0 0 0 0;
     padding: 0px 10px 0px 10px;
-    border-left: 1px solid white;
+    border-left: 1px solid black;
 }
 #portal-colophon ul li:first-child {
     border-left-width: 0px;
 }
 #portal-colophon ul li a {
     text-decoration: none;
-    color: white;
+    color: black;
     display: block;
 }
 #portal-colophon ul li a:hover {
     text-decoration: underline;
-    color: white;
+    color: black;
 }
 #colophon-content {
 	margin-bottom: 14px;

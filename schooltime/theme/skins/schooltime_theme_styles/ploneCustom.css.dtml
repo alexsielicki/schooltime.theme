@@ -247,7 +247,7 @@ body.atrefbrowser {
 #portal-colophon p a,
 #portal-colophon p a:hover
 {
-    color: white;
+    color: black;
     text-decoration: underline;
 }
 #portal-colophon ul {
