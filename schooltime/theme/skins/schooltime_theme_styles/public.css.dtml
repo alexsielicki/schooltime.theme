@@ -43,11 +43,11 @@ body.kssActive h1.formlibInlineEditable:hover {
     margin-top: 0;
 }
 #homepage-slideshow {
-	width: 573px;
-	height: 300px;
+	width: 577px;
+	height: 304px;
 	background-color: black;
 	overflow: hidden;
-	border: 2px solid #EA2F42;
+	border: 1px solid #9d9592;
 }
 .documentContent {
     /* font-size: 110%; */
@@ -65,6 +65,7 @@ body.kssActive h1.formlibInlineEditable:hover {
 	width: 573px;
 	height: 300px;
 	overflow: hidden;
+	border: 2px solid #060404;
 }
 .slideElement {
     cursor: pointer;
