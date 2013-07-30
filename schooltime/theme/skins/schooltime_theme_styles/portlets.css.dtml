@@ -353,7 +353,7 @@ div.managedPortlet {
 
 /* Static text portlet */
 .portletStaticText ul {
-    list-style-image: url(&dtml-portal_url;/bullet.gif);
+    list-style-image: url(&dtml-portal_url;/bullet.png);
     list-style-type: square; 
     margin: 0.5em 0 0 1.5em;
 }

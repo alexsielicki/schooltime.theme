@@ -217,7 +217,7 @@ h3 {
 }
 
 .documentContent ul {
-    list-style-image: url(&dtml-portal_url;/bullet.gif);
+    list-style-image: url(&dtml-portal_url;/bullet.png);
     list-style-type: square;
     margin: 0.5em 0 0 21px;
     line-height: 15px;
@@ -1266,7 +1266,7 @@ textarea.proportional {
     text-decoration: none;
 }
 #portal-footer ul {
-	list-style-image: url(&dtml-portal_url;/bullet.gif);
+	list-style-image: url(&dtml-portal_url;/bullet.png);
     list-style-type: square;
     margin: 0.5em 0 0 15px;
     line-height: 15px;
