@@ -275,7 +275,7 @@ h3 {
 #portal-logo img {
     border: 0;
     padding: 0;
-    margin: 20px 0px 0px 15px;
+    margin: -6px 0px 0px 0px;
     position: relative;
     z-index: 10;
 }
