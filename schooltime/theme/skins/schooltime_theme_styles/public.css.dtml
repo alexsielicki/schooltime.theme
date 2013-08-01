@@ -1119,16 +1119,16 @@ table.plain th {
 
 /* Batch selector */
 .listingBar {
-    background-color: &dtml-globalBackgroundColor;;
+    background-color: #FFD14A;
     border-color: &dtml-globalBorderColor;;
     border-style: &dtml-borderStyle;;
     border-width: &dtml-borderWidth;;
-    padding: 0em 1em;
+    padding: 20px 10px;
     text-align: center;
     text-transform: &dtml-textTransform;;
     vertical-align: top;
     margin: 1em 0em;
-    font-size: 94%;
+    font-size: 15px;
     clear: both;
 }
 .listingBar span.previous,
