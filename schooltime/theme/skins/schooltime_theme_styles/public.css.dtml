@@ -202,16 +202,8 @@ h3 {
 	margin: 0 0 0 215px;
 }
 #performance-listing-homepage .performanceTickets a {
-    background: transparent url(&dtml-portal_url;/tickets-btn.gif) no-repeat center center;
-    color: #020307;
-    font-size: 11px;
-    font-weight: bold;
-    text-decoration: none;
     display: inline-block;
-    width: 118px;
-    line-height: 36px;
-    text-align: center;
-    margin-left: -3px;
+    margin-top: 1em;
 }
 .homepagePerformanceImage {
 	float: left;
@@ -1435,8 +1427,13 @@ td#footer-right {
     text-decoration: underline;
     color: black;
 }
+.section-front-page
 #colophon-content {
 	margin-bottom: 14px;
+}
+.section-front-page #colophon-content
+{
+    margin-top: -68px;
 }
 #portal-colophon #copyright,
 #portal-colophon #fostermilo 

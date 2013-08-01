@@ -261,12 +261,13 @@ body.atrefbrowser {
     border-width: 0;
 }
 #portal-colophon h3 {
-    font-family: 'Princess Sofia', cursive;
+    font-family: 'Schoolbell', cursive;
     border-width: 0;
-    color: #ffd04a;
+    color: #9E003A;
     font-size: 31px;
     text-transform: none;
     padding-bottom: 25px;
+    text-align: center;
 }
 #past-shows .tileItem {
     clear: left;
