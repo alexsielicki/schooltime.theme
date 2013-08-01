@@ -108,7 +108,9 @@ h1
 }
 #homepage-body-text h3,
 #homepage-body-text h3 a,
-h2
+h2,
+#homepage-this-season h3,
+#homepage-this-season h3 a
 {
     color: #9E003A !important;
     font-size: 20px;
@@ -122,7 +124,9 @@ h2 {
 h3 {
     color: #322F78;
 }
-#homepage-body-text .discreet {
+#homepage-body-text .discreet,
+#homepage-this-season .performanceDate
+{
     color: #9E003A;
     font-size: 12px;
     text-transform: uppercase;
@@ -147,8 +151,7 @@ h3 {
 }
 #homepage-this-season {
 	height: 100%;
-	padding: 0px 10px 0px 10px;
-	color: white;
+	padding: 0px 0px 0px 3px;
 }
 #homepage-this-season h2 {
 	margin: 0;
@@ -156,18 +159,18 @@ h3 {
 	color: #c5d4df;
 	text-transform: uppercase;
 }
-#homepage-this-season h3,
-#homepage-this-season h3 a {
-	color: #c5d4df !important;
-	text-decoration: none;
-	margin: 0 0 1px 0;
-}
+/*#homepage-this-season h3,*/
+/*#homepage-this-season h3 a {*/
+	/*color: #c5d4df !important;*/
+	/*text-decoration: none;*/
+	/*margin: 0 0 1px 0;*/
+/*}*/
 #homepage-this-season h3 a:hover {
     text-decoration: underline;
 }
 #homepage-this-season .performanceDate {
-    color: #fab301;
-    font-style: italic;
+    line-height: 1.5em;
+    margin: 0 0 0.75em;
 }
 #homepage-this-season #season-links {
 	padding: 0px 0 7px 0;
@@ -193,10 +196,10 @@ h3 {
     text-decoration: underline;
 }
 #performance-listing-homepage .performance {
-	padding: 5px 0px;
+	padding: 0px 0px 10px 0px;
 }
 #performance-listing-homepage .performanceText {
-	margin: 0 0 0 301px;
+	margin: 0 0 0 215px;
 }
 #performance-listing-homepage .performanceTickets a {
     background: transparent url(&dtml-portal_url;/tickets-btn.gif) no-repeat center center;
@@ -212,9 +215,11 @@ h3 {
 }
 .homepagePerformanceImage {
 	float: left;
-	width: 288px;
-	height: 88px;
-	border: 1px solid #707070;
+	margin-top: 0;
+    -webkit-box-shadow:  0px 0px 4px 0px rgba(0, 0, 0, 0.7);
+    box-shadow:  0px 0px 4px 0px rgba(0, 0, 0, 0.7);
+    margin-right: 12px;
+    margin-bottom: 6px;
 }
 
 .documentContent ul {

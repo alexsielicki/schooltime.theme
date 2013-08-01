@@ -81,21 +81,21 @@ window.addEvent('domready', startGallery);
         </metal:field>
 </div>
 
-<tal:disable tal:condition="nothing">
+<tal:upcoming tal:condition="context/getHomepageUpcomingShows">
 <div id="homepage-this-season-wrapper">
 <div id="homepage-this-season">
 
-<ul id="season-links">
-<li><a href="#" 
-	tal:define="currentSeason context/getCurrentSeason|nothing;
-		    currentSeasonUrl currentSeason/getURL|nothing;" 
-	tal:attributes="href currentSeasonUrl">View full season</a>
-</li>
-<li><a href="/tickets/season-tickets" tal:attributes="href string:${portal_url}/tickets/season-tickets">Buy tickets</a>
-</li>
-</ul>
+<!--<ul id="season-links">-->
+<!--<li><a href="#" -->
+	<!--tal:define="currentSeason context/getCurrentSeason|nothing;-->
+		    <!--currentSeasonUrl currentSeason/getURL|nothing;" -->
+	<!--tal:attributes="href currentSeasonUrl">View full season</a>-->
+<!--</li>-->
+<!--<li><a href="/tickets/season-tickets" tal:attributes="href string:${portal_url}/tickets/season-tickets">Buy tickets</a>-->
+<!--</li>-->
+<!--</ul>-->
 
-<h2>Upcoming</h2>
+<!--<h2>Upcoming</h2>-->
 
 <div id="performance-listing-homepage"
 	tal:define="performances context/getHomepageUpcomingShows"
@@ -104,7 +104,7 @@ window.addEvent('domready', startGallery);
 <a href="#" tal:attributes="href performance/getURL|performance/absolute_url;">
                         <img src="" alt=""
                              tal:condition="exists:performance/aq_parent/image_preview"
-                             tal:replace="structure python: path('nocall:performance/tag')(scale='preview', css_class='homepagePerformanceImage')" />
+                             tal:replace="structure python: path('nocall:performance/tag')(scale='mini', css_class='homepagePerformanceImage')" />
                     </a>
 <div class="performanceText">
 <h3>
@@ -126,7 +126,7 @@ window.addEvent('domready', startGallery);
 
 </div>
 </div>
-</tal:disable>
+</tal:upcoming>
 
         <div metal:use-macro="here/document_relateditems/macros/relatedItems">
             show related items if they exist

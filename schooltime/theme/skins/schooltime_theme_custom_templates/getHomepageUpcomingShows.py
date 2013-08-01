@@ -1,4 +1,4 @@
-limit = 2
+limit = 1
 parentIds = []
 upcomingShows = []
 performances = context.queryCatalog({'portal_type':'Performance', 'sort_on':'start', 'start': {'query': DateTime(), 'range': 'min'}})
