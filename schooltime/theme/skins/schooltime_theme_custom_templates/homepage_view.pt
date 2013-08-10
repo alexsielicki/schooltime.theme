@@ -101,14 +101,14 @@ window.addEvent('domready', startGallery);
 	tal:define="performances context/getHomepageUpcomingShows"
 	tal:condition="performances">
 <div class="performance" tal:repeat="performance performances">
-<a href="#" tal:attributes="href performance/getURL|performance/absolute_url;">
+<a href="#" tal:attributes="href performance/aq_inner/aq_parent/getURL|performance/aq_inner/aq_parent/absolute_url;">
                         <img src="" alt=""
                              tal:condition="exists:performance/aq_parent/image_preview"
                              tal:replace="structure python: path('nocall:performance/tag')(scale='mini', css_class='homepagePerformanceImage')" />
                     </a>
 <div class="performanceText">
 <h3>
-	<a href="#" tal:attributes="href performance/getURL|performance/absolute_url;"
+	<a href="#" tal:attributes="href performance/aq_inner/aq_parent/getURL|performance/aq_inner/aq_parent/absolute_url;"
 		tal:content="performance/Title">[Performance Title]</a>
 </h3>
 
@@ -119,7 +119,8 @@ window.addEvent('domready', startGallery);
 
 <div class="performanceDescription" tal:content="python: performance.aq_parent.Description()">[Performance Description]</div>
 
-<div class="performanceTickets"><a href="#" tal:attributes="href performance/getURL|performance/absolute_url;">Tickets & Info</a></div>
+<div class="performanceTickets"><a href="#" 
+	tal:attributes="href performance/aq_inner/aq_parent/getURL|performance/aq_inner/aq_parent/absolute_url;">Tickets & Info</a></div>
 </div>
 <div class="visualClear"><!-- --></div>
 </div>

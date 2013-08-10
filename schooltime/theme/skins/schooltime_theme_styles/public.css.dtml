@@ -99,12 +99,18 @@ body.kssActive h1.formlibInlineEditable:hover {
 h1
 {
 	font-size: 28px;
-	color: #9E003A;
+	color: #322f78;
 	text-transform: uppercase;
 	border-bottom: 1px solid #FFBD02;
 	padding-bottom: 6px;
 	font-weight: normal;
 	margin-bottom: 21px;
+}
+.template-season_view h1 {
+    border-bottom-width: 0;
+}
+#homepage-body-text h2 {
+    color: #9E003A !important;
 }
 #homepage-body-text h3,
 #homepage-body-text h3 a,
@@ -112,7 +118,7 @@ h2,
 #homepage-this-season h3,
 #homepage-this-season h3 a
 {
-    color: #9E003A !important;
+    color: #322f78 !important;
     font-size: 20px;
     margin-bottom: 0;
     margin-top: 0;
@@ -1092,7 +1098,7 @@ table.vertical td {
     margin-left: 13px;
 }
 .performance-dates-wrapper li {
-    
+    font-size: 17px;
 }
 
 .performance-dates-wrapper li.row-even {
@@ -1119,10 +1125,10 @@ table.plain th {
 
 /* Batch selector */
 .listingBar {
-    background-color: #FFD14A;
-    border-color: &dtml-globalBorderColor;;
-    border-style: &dtml-borderStyle;;
-    border-width: &dtml-borderWidth;;
+    /*background-color: #FFD14A;*/
+    /*border-color: &dtml-globalBorderColor;;*/
+    /*border-style: &dtml-borderStyle;;*/
+    /*border-width: &dtml-borderWidth;;*/
     padding: 20px 10px;
     text-align: center;
     text-transform: &dtml-textTransform;;
@@ -1324,12 +1330,12 @@ textarea.proportional {
     float: none;
     margin: 0 0 0 0;
     padding: 0 13px 1em 13px;
-    color: black;
+    color: white;
     position: relative;
     background: transparent url(&dtml-portal_url;/colophon-background.png) center top no-repeat;
 }
 #portal-colophon a {
-	color: black;
+	color: white;
 	text-decoration: none;
 }
 #portal-colophon a:hover {
@@ -1413,19 +1419,19 @@ td#footer-right {
     font-size: 12px;
     margin: 0 0 0 0;
     padding: 0px 10px 0px 10px;
-    border-left: 1px solid black;
+    border-left: 1px solid white;
 }
 #portal-colophon ul li:first-child {
     border-left-width: 0px;
 }
 #portal-colophon ul li a {
     text-decoration: none;
-    color: black;
+    color: white;
     display: block;
 }
 #portal-colophon ul li a:hover {
     text-decoration: underline;
-    color: black;
+    color: white;
 }
 .section-front-page
 #colophon-content {
