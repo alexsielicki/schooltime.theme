@@ -696,7 +696,7 @@ form.searchPage input.searchButton {
     list-style: none;
     position: absolute;
     top: 0px;
-    left: 20px;
+    right: 20px;
 }
 #portal-personaltools .portalUser {
     background: transparent url(&dtml-portal_url;/user.gif) center left no-repeat;
