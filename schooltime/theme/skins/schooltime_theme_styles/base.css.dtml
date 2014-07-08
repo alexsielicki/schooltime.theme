@@ -22,7 +22,14 @@ body {
     color: &dtml-fontColor;;
     margin: 0;
     padding: 0;
-    background: #F25B1F url(&dtml-portal_url;/2014chlkbdbckgrd.png) no-repeat center top;
+    background: #61c1ac; /* Old browsers */
+    background: -moz-linear-gradient(top,  #61c1ac 0%, #7981bb 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#61c1ac), color-stop(100%,#7981bb)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #61c1ac 0%,#7981bb 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #61c1ac 0%,#7981bb 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #61c1ac 0%,#7981bb 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #61c1ac 0%,#7981bb 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#61c1ac', endColorstr='#7981bb',GradientType=0 ); /* IE6-9 */
 }
 #visual-portal-wrapper-one {
     
