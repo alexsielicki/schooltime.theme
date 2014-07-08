@@ -265,7 +265,7 @@
 .ploneCalendar .event,
 .ploneCalendar .todayevent
 {
-    background-color: #375168;
+    background-color: #6976b5;
     font-weight: normal;
 }
 .ploneCalendar .todayevent {
@@ -353,7 +353,7 @@ div.managedPortlet {
 
 /* Static text portlet */
 .portletStaticText ul {
-    list-style-image: url(&dtml-portal_url;/bullet.png);
+    list-style-image: url(&dtml-portal_url;/bullet.gif);
     list-style-type: square; 
     margin: 0.5em 0 0 1.5em;
 }

@@ -47,7 +47,7 @@ body.kssActive h1.formlibInlineEditable:hover {
 	height: 304px;
 	background-color: black;
 	overflow: hidden;
-	border: 1px solid #9d9592;
+	border: 0px solid #9d9592;
 }
 .documentContent {
     /* font-size: 110%; */
@@ -65,7 +65,7 @@ body.kssActive h1.formlibInlineEditable:hover {
 	width: 573px;
 	height: 300px;
 	overflow: hidden;
-	border: 2px solid #060404;
+	border: 2px solid #ffbd02;
 }
 .slideElement {
     cursor: pointer;
@@ -110,7 +110,7 @@ h1
     border-bottom-width: 0;
 }
 #homepage-body-text h2 {
-    color: #9E003A !important;
+    color: #56629d !important;
 }
 #homepage-body-text h3,
 #homepage-body-text h3 a,
@@ -133,7 +133,7 @@ h3 {
 #homepage-body-text .discreet,
 #homepage-this-season .performanceDate
 {
-    color: #9E003A;
+    color: #59c0ac;
     font-size: 12px;
     text-transform: uppercase;
 }
@@ -221,7 +221,7 @@ h3 {
 }
 
 .documentContent ul {
-    list-style-image: url(&dtml-portal_url;/bullet.png);
+    list-style-image: url(&dtml-portal_url;/bullet.gif);
     list-style-type: square;
     margin: 0.5em 0 0 21px;
     line-height: 15px;
@@ -1216,7 +1216,7 @@ textarea.proportional {
     background-color: &dtml-backgroundColor;;
     float: none;
     line-height: 1.2em;
-    padding: 20px 13px 27px 13px;
+    padding: 20px 13px 1px 13px;
     display: none;
     color: #020307;
     font-size: 13px;
@@ -1270,7 +1270,7 @@ textarea.proportional {
     text-decoration: none;
 }
 #portal-footer ul {
-	list-style-image: url(&dtml-portal_url;/bullet.png);
+	list-style-image: url(&dtml-portal_url;/bullet.gif);
     list-style-type: square;
     margin: 0.5em 0 0 15px;
     line-height: 15px;
@@ -1439,7 +1439,7 @@ td#footer-right {
 }
 .section-front-page #colophon-content
 {
-    margin-top: -68px;
+    margin-top: -5px;
 }
 #portal-colophon #copyright,
 #portal-colophon #fostermilo 

@@ -263,8 +263,8 @@ body.atrefbrowser {
 #portal-colophon h3 {
     font-family: 'Loved by the King', cursive;
     border-width: 0;
-    color: #9E003A;
-    font-size: 31px;
+    color: #FFD148;
+    font-size: 37px;
     text-transform: none;
     padding-bottom: 25px;
     text-align: center;
