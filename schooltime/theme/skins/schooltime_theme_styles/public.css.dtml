@@ -279,7 +279,7 @@ h3 {
 #portal-logo img {
     border: 0;
     padding: 0;
-    margin: -6px 0px 0px 0px;
+    margin: -10px 0px 0px -7px;
     position: relative;
     z-index: 10;
 }
@@ -620,7 +620,7 @@ form.searchPage input.searchButton {
     text-align: center;
     font-size: 17px;
     font-weight: bold;
-    text-shadow: -1px -1px #7f0b09;
+    text-shadow: -1px -1px black;
 }
 #portal-globalnav li.iteration2 a,
 #portal-globalnav li.iteration3 a,
