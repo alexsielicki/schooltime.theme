@@ -621,15 +621,13 @@ form.searchPage input.searchButton {
     font-size: 17px;
     font-weight: bold;
     text-shadow: -1px -1px black;
+    padding: 0px 26px;
 }
-#portal-globalnav li.iteration2 a,
-#portal-globalnav li.iteration3 a,
-#portal-globalnav li.iteration4 a,
-#portal-globalnav li.iteration5 a{
-    width: 152px;
+#portal-globalnav li.iteration1 a {
+    padding-left: 54px;
 }
 #portal-globalnav li.iteration6 a {
-    width: 160px;
+    padding-right: 54px;
 }
 #portal-globalnav li.selected a {
     /* The selected tab. There's only one of this */
@@ -638,9 +636,6 @@ form.searchPage input.searchButton {
     height: auto;
     margin-right: 0;
     display: block;
-}
-#portal-globalnav li.iteration1 a {
-	width: 165px;
 }
 .section-front-page #portal-globalnav li.selected a {
 	
