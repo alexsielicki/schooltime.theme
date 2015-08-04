@@ -279,7 +279,7 @@ h3 {
 #portal-logo img {
     border: 0;
     padding: 0;
-    margin: -10px 0px 0px -7px;
+    margin: 10px 0px 0px -7px;
     position: relative;
     z-index: 10;
 }
@@ -345,7 +345,7 @@ h3 {
 }
 #portal-header {
 	position: relative;
-	height: 231px;
+	height: 291px;
 }
 
 /* Site-wide action menu - font size, contact, index, sitemap etc */
@@ -362,7 +362,7 @@ h3 {
     float: right;
     padding: 0;
     position: relative;
-    top: 130px;
+    top: 190px;
     right: 20px;
     z-index: 10;
 }
@@ -411,7 +411,7 @@ h3 {
     float: right;
     clear: right;
     background-color: transparent;
-    margin: 2em 0 0 0;
+    margin: 7em 0 0 0;
     padding: 0 2em 0 0;
     text-align: right;
     text-transform: &dtml-textTransform;;
@@ -574,7 +574,7 @@ form.searchPage input.searchButton {
     height: 56px;
     margin-left: -13px;
     position: absolute;
-    top: 140px;
+    top: 200px;
     left: 0px;
 }
 /*
