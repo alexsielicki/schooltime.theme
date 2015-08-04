@@ -345,7 +345,7 @@ h3 {
 }
 #portal-header {
 	position: relative;
-	height: 291px;
+	height: 321px;
 }
 
 /* Site-wide action menu - font size, contact, index, sitemap etc */
@@ -362,7 +362,7 @@ h3 {
     float: right;
     padding: 0;
     position: relative;
-    top: 190px;
+    top: 220px;
     right: 20px;
     z-index: 10;
 }
@@ -411,7 +411,7 @@ h3 {
     float: right;
     clear: right;
     background-color: transparent;
-    margin: 7em 0 0 0;
+    margin: 9em 0 0 0;
     padding: 0 2em 0 0;
     text-align: right;
     text-transform: &dtml-textTransform;;
@@ -574,7 +574,7 @@ form.searchPage input.searchButton {
     height: 56px;
     margin-left: -13px;
     position: absolute;
-    top: 200px;
+    top: 230px;
     left: 0px;
 }
 /*
