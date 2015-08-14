@@ -272,4 +272,11 @@ body.atrefbrowser {
 #past-shows .tileItem {
     clear: left;
 }
+.performance-dates-wrapper .soldOut,
+.performance-dates-wrapper .soldOutAndFull
+{
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #D86F3B;
+}
 /* </dtml-with> */
