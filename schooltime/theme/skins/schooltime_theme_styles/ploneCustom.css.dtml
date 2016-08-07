@@ -241,6 +241,12 @@ body.atrefbrowser {
     line-height: 40px;
     margin: 0px 8px 0px 7px;
 }
+#portal-colophon {
+    background-image: none;
+}
+#portal-colophon .colophonWrapper {
+    padding-top: 10px;
+}
 #portal-colophon p {
     float: left;
     clear: left;
