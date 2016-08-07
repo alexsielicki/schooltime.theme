@@ -203,7 +203,7 @@ body.atrefbrowser {
     display: none;
 }
 .LSBox {
-    background-color: white;
+    background-color: #dcdde1;
     padding: 5px;
     border-radius: 10px;
     -moz-border-radius: 10px;
@@ -214,9 +214,10 @@ body.atrefbrowser {
     margin-left: 6px;
     font-style: italic;
     width: 200px;
+    background-color: transparent;
 }
 #portal-searchbox .searchButton {
-    background: url(&dtml-portal_url;/search_icon.png) no-repeat scroll center center #FFFFFF;
+    background: url(&dtml-portal_url;/search_icon.png) no-repeat scroll center center transparent;
     border: medium none;
     color: #000000;
     cursor: pointer;
@@ -263,7 +264,7 @@ body.atrefbrowser {
 #portal-colophon h3 {
     font-family: 'Loved by the King', cursive;
     border-width: 0;
-    color: #FFD148;
+    color: #79a5d0;
     font-size: 37px;
     text-transform: none;
     padding-bottom: 25px;
@@ -278,5 +279,57 @@ body.atrefbrowser {
     font-weight: bold;
     text-transform: uppercase;
     color: #D86F3B;
+}
+#portal-columns,
+#portal-footer
+{
+    border-color: #b3b3b3;
+    border-width: 1px;
+    border-style: solid;
+}
+#portal-columns {
+    border-top-width: 0;
+    border-bottom-width: 0;
+}
+#portal-footer {
+    border-top-width: 0;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+#portal-footer .callout a {
+    background-color: #85b3e0;
+}
+.portletCalendar {
+    background-image: none;
+}
+#calendar-title {
+    background-image: none;
+    background-color: #85b3e0;
+    border-width: 0;
+    color: white;
+    text-shadow: none;
+}
+.ploneCalendar .event, .ploneCalendar .todayevent {
+    background-color: #85b3e0;
+}
+#myGallery {
+    border-color: #9fa2a7;
+}
+#portal-logo img {
+    width: 350px;
+    height: auto;
+    margin: 30px 0 0 5px;
+}
+#portal-searchbox {
+    margin-top: 0px;
+}
+#portal-globalnav {
+    top: 120px;
+}
+#portal-siteactions {
+    top: 118px;
+}
+#portal-header {
+    height: 211px;
 }
 /* </dtml-with> */
