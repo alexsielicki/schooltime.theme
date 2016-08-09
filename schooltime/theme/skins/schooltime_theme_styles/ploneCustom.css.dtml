@@ -289,12 +289,19 @@ body.atrefbrowser {
 #portal-columns,
 #portal-footer
 {
-    border-color: #b3b3b3;
-    border-width: 1px;
+    border-color: #b6b6b6;
+    border-width: 2px;
     border-style: solid;
 }
 #portal-columns {
     border-top-width: 0;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-collapse: separate; /* This allows rounded borders on tables */
+}
+.template-homepage_view #portal-columns {
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
     border-bottom-width: 0;
 }
 #portal-footer {
@@ -319,21 +326,23 @@ body.atrefbrowser {
     background-color: #85b3e0;
 }
 #myGallery {
-    border-color: #9fa2a7;
+    border-color: #b6b6b6;
 }
 #portal-logo img {
     width: 350px;
     height: auto;
-    margin: 30px 0 0 5px;
+    margin: 23px 0 0 5px;
 }
 #portal-searchbox {
-    margin-top: 0px;
+    margin-top: -10px;
+    margin-right: -24px;
 }
 #portal-globalnav {
-    top: 120px;
+    top: 115px;
 }
 #portal-siteactions {
-    top: 118px;
+    top: 112px;
+    right: 32px;
 }
 #portal-header {
     height: 211px;

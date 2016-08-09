@@ -571,7 +571,7 @@ form.searchPage input.searchButton {
     line-height: normal;
     overflow: hidden;
     width: 939px;
-    height: 56px;
+    height: 61px;
     margin-left: -13px;
     position: absolute;
     top: 230px;
