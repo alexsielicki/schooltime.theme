@@ -339,6 +339,7 @@ body.atrefbrowser {
 }
 #portal-globalnav {
     top: 115px;
+    padding-top: 41px;
 }
 #portal-siteactions {
     top: 112px;
