@@ -101,7 +101,7 @@ h1
 	font-size: 28px;
 	color: #56629d;
 	text-transform: uppercase;
-	border-bottom: 1px solid #FFBD02;
+	border-bottom: 1px solid #b6b6b6;
 	padding-bottom: 6px;
 	font-weight: normal;
 	margin-bottom: 21px;
@@ -1230,7 +1230,7 @@ textarea.proportional {
 	/* border-collapse: collapse; */
 	border-spacing: 0;
 	border: 1px solid #c5d4cf; /* blue/green */
-	background: white url(&dtml-portal_url;/footer-bg.png) repeat-x center top;
+	/*background: white url(&dtml-portal_url;/footer-bg.png) repeat-x center top;*/
 }
 #portal-footer #homepage-bottom td {
 	vertical-align: top;
