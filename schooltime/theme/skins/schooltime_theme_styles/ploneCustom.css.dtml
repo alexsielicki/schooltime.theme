@@ -137,7 +137,7 @@ TABLE.cal TH {
     display: inline-block;
     padding: 0px 10px 0px 10px;
     color: #322f78;
-    font-size: 12px;
+    font-size: 20px;
     font-weight: bold;
     line-height: 71px;
 }
@@ -215,6 +215,7 @@ body.atrefbrowser {
     font-style: italic;
     width: 200px;
     background-color: transparent;
+    font-size: 20px;
 }
 #portal-searchbox .searchButton {
     background: url(&dtml-portal_url;/search_icon.png) no-repeat scroll center center transparent;
@@ -250,6 +251,7 @@ body.atrefbrowser {
 #portal-colophon p {
     float: left;
     clear: left;
+    font-size: 65%;
 }
 #portal-colophon p a,
 #portal-colophon p a:hover
@@ -329,9 +331,9 @@ body.atrefbrowser {
     border-color: #b6b6b6;
 }
 #portal-logo img {
-    width: 350px;
+    width: 554px;
     height: auto;
-    margin: 23px 0 0 5px;
+    margin: -284px 0 0 -20px;
 }
 #portal-searchbox {
     margin-top: -10px;
@@ -348,4 +350,39 @@ body.atrefbrowser {
 #portal-header {
     height: 211px;
 }
+
+/* Increasing font sizes so site looks better on mobile. August 2018. */
+body,
+#portal-footer,
+.documentDescription
+{
+    font-size: 20px;
+}
+.documentContent ul,
+#portal-footer ul
+{
+    line-height: 1.3em;
+}
+#homepage-body-text td {
+    padding-bottom: 30px;
+}
+#portal-colophon #fostermilo {
+    font-size: 12px;
+}
+#portal-colophon ul li {
+    font-size: 16px;
+}
+#portal-logo {
+    position: relative;
+    z-index: 0;
+}
+h2 {
+    margin-top: 1.75em;
+}
+
+
+
+
+
+
 /* </dtml-with> */
