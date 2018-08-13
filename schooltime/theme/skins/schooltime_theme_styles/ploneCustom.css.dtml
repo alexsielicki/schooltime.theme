@@ -391,6 +391,9 @@ h3 {
     width: 285px;
     height: auto;
 }
+.template-show_view iframe {
+    max-width: 573px !important;
+}
 
 
 
